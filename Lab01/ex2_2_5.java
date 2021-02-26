@@ -1,23 +1,24 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 public class ex2_2_5 {
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		String str1, str2;
    
-  		System.out.print("Input first number: ");
-  		double num1 = in.nextDouble();
+		str1 = JOptionPane.showInputDialog(null, "Input the first number: ", "First number", JOptionPane.INFORMATION_MESSAGE);
+		double num1 = Double.parseDouble(str1);
    
-  		System.out.print("Input second number: ");
-  		double num2 = in.nextDouble();
+   		str2 = JOptionPane.showInputDialog(null, "Input the second number: ", "Second number", JOptionPane.INFORMATION_MESSAGE);
+		double num2 = Double.parseDouble(str2);
+
+		JOptionPane.showMessageDialog(null, "Sum: " + (num1 + num2));
+
+		JOptionPane.showMessageDialog(null, "Difference: " + (num1 - num2));
    
- 
-  		System.out.println("Sum: " + (num1 + num2));
+ 		JOptionPane.showMessageDialog(null, "Product: " + (num1 * num2));
    
-  		System.out.println("Difference: " + (num1 - num2));
-   
-  		System.out.println("Product:" + (num1 * num2));
-   
-  		System.out.println("Quotient" + (num1 / num2));
+ 		JOptionPane.showMessageDialog(null, "Quotient: " + (num1 / num2));
+	
+		System.exit(0);
 	}
 
 }
