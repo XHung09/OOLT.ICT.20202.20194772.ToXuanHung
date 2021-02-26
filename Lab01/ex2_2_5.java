@@ -16,7 +16,9 @@ public class ex2_2_5 {
    
  		JOptionPane.showMessageDialog(null, "Product: " + (num1 * num2));
    
- 		JOptionPane.showMessageDialog(null, "Quotient: " + (num1 / num2));
+		if (num2 == 0) {
+			JOptionPane.showMessageDialog(null, "The divisor is not valid");
+		}
 	
 		System.exit(0);
 	}
