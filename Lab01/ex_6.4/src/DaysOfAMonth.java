@@ -13,51 +13,47 @@ public class DaysOfAMonth
         System.out.print("Input a year: ");
         int year = keyboard.nextInt();
 
-        if (month == "1" || month == "3" || month == "5" || month == "7" 
-        		|| month == "8" || month == "10" || month == "12") {
+        if (month.equals("1") || month.equals("3") || month.equals("5") || month.equals("7") 
+        		|| month.equals("8") || month.equals("10") || month.equals("12") ||
+        		month.equals("Jan.") || month.equals("Mar.") || month.equals("May") 
+        		|| month.equals("July") || month.equals("Aug.") || month.equals("Oct.") 
+        		|| month.equals("Dec.")) {
         	days = 31;
         }
         
-        if (month == "Jan." || month == "Mar." || month == "May" || month == "July" 
-        		|| month == "Aug." || month == "Oct." || month == "Dec.") {
-        	days = 31;
-        }
-        
-        if (month == "January" || month == "March" || month == "May" || month == "July" 
-        		|| month == "August" || month == "October" || month == "December") {
-        	days = 31;
-        }
-        
-        if (month == "Jan" || month == "Mar" || month == "May" || month == "Jul" 
-        		|| month == "Aug" || month == "Oct" || month == "Dec") {
+        if (month.equals("January") || month.equals("March") || month.equals("May") 
+        		|| month.equals("July") || month.equals("August") || month.equals("October") 
+        		|| month.equals("December") || month.equals("Jan") || month.equals("Mar") 
+        		|| month.equals("May") || month.equals("Jul") || month.equals("Aug") 
+        		|| month.equals("Oct") || month.equals("Dec")) {
         	days = 31;
         }
         
         //__________________________________________//
         
-        if (month == "4" || month == "6" || month == "9" || month == "11") {
+        if (month.equals("4") || month.equals("6") || month.equals("9") || month.equals("11")) {
         	days = 30;
         }
         
-        if (month == "Apr." || month == "June" || month == "Sept." || month == "Nov.") {
+        if (month.equals("Apr.") || month.equals("June") || month.equals("Sept.") || month.equals("Nov.")) {
         	days = 30;
         }
         
-        if (month == "Apr" || month == "Jun" || month == "Sep" || month == "Nov") {
+        if (month.equals("Apr") || month.equals("Jun") || month.equals("Sep") || month.equals("Nov")) {
         	days = 30;
         }
         
-        if (month == "April" || month == "June" || month == "September" || month == "November") {
+        if (month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
         	days = 30;
         }
         
         //___________________________________________//
         
-        if (month == "2" || month == "Feb." || month == "Feb" || month == "February") {
+        if (month.equals("2") || month.equals("Feb.") || month.equals("Feb") || month.equals("February")) {
             if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
-                n = 29;
+                days = 29;
             } else {
-                n = 28;
+                days = 28;
             }
         }
         
