@@ -1,4 +1,3 @@
-
 public class Aims {
 
 	public static void main(String[] args) {
@@ -13,13 +12,17 @@ public class Aims {
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		anOrder.addDigitalVideoDisc(dvd2);
 		
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation, 18.99f");
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		anOrder.addDigitalVideoDisc(dvd3);
 		
-		//print total cost of the items in the cart
-		System.out.println("Total Cost is: ");
+		// Print total cost of the items in the cart
+		System.out.print("Total Cost is: ");
 		System.out.println(anOrder.totalCost());
 
+		// Remove a disc in the cart
+		anOrder.removeDigitalVideoDisc(dvd3);
+		System.out.print("Total Cost is: ");
+		System.out.println(anOrder.totalCost());
 	}
 
 }
