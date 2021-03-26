@@ -1,3 +1,6 @@
+package hust.soict.globalict.test.cart;
+import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 
 public class CartTest {
 	public static void main(String[] args) {
