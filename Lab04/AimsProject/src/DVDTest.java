@@ -1,6 +1,3 @@
-package hust.soict.globalict.test.util;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
-import hust.soict.globalict.aims.utils.DVDUtils;
 
 public class DVDTest {
 
