@@ -114,16 +114,34 @@ public class Cart {
 	public void sortCartByCost() {
 		sortByCost(qtyOrdered, itemsOrdered);
 		System.out.println("sort by cost: ");
+		for (int i = 0; i < qtyOrdered; i++) {
+			System.out.println(itemsOrdered[i].getDetail());
+		} 
 	}
 	
 	public void sortCartByTitle() {
 		sortByTitle(qtyOrdered, itemsOrdered);
 		System.out.println("sort by Title: ");
+		for (int i = 0; i < qtyOrdered; i++) {
+			System.out.println(itemsOrdered[i].getDetail());
+		} 
 	}
 	
 	public void sortCartByLength() {
 		sortByLength(qtyOrdered, itemsOrdered);
 		System.out.println("sort by Length: ");
+		for (int i = 0; i < qtyOrdered; i++) {
+			System.out.println(itemsOrdered[i].getDetail());
+		} 
+	}
+	
+	public void sortCart() {
+		sortByTitle(qtyOrdered, itemsOrdered);
+		sortByCost(qtyOrdered, itemsOrdered);
+		sortByLength(qtyOrdered, itemsOrdered);
+		for (int i = 0; i < qtyOrdered; i++) {
+			System.out.println(itemsOrdered[i].getDetail());
+		} 
 	}
 	
 	// search dvd
