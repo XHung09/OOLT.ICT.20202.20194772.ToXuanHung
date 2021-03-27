@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+E:\Education\OOLT.ICT.20202.20194772.ToXuanHung\.metadata\.plugins\org.eclipse.jdt.core
+1907954197.index
+2679599929.index
+1639354633.index
+2295673916.index
+4291953834.index

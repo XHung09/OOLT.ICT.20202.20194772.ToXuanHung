@@ -1,7 +1,0 @@
-INDEX VERSION 1.131+E:\Education\OOLT.ICT.20202.20194772.ToXuanHung\lab03\.metadata\.plugins\org.eclipse.jdt.core
-1907954197.index
-113123971.index
-2247633679.index
-3285135714.index
-4024272822.index
-2679599929.index
