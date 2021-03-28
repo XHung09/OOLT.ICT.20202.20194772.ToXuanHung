@@ -152,7 +152,7 @@ public class Cart {
 	// get detail
 	public void printCart() {
 		System.out.println();
-		System.out.println("***********************Order***********************");
+		System.out.println("***********************Cart***********************");
 		System.out.println("Ordered Items:");
 		for (int i = 0; i < qtyOrdered; i++) {
 			System.out.print(i + 1 + ". DVD - ");
