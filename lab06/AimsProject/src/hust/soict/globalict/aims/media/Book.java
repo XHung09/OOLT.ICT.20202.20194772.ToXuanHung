@@ -4,42 +4,28 @@ import java.util.List;
 
 public class Book extends Media {
 
-	private int id;
-	private String title;
-	private String category;
-	private float cost;
 	private List<String> authors = new ArrayList<String>();
 	
-	public int getId() {
-		return id;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public String getCategory() {
-		return category;
-	}
-
-
-	public float getCost() {
-		return cost;
-	}
-
-
-	private List<String> getAuthors() {
+	public List<String> getAuthors() {
 		return authors;
 	}
 
-	addAuthor(String authorName) {
-		
+	public void addAuthor(String authorName) {
+		if (authors.contains(authorName) == false) {
+			authors.add(authorName);
+			System.out.println("Succeed!");
+		} else {
+			System.out.println("This author has already existed!");
+		}
 	}
 	
-	removeAuthor(String authorName) {
-		
+	public void removeAuthor(String authorName) {
+		if (authors.contains(authorName) == true) {
+			authors.remove(authorName);
+			System.out.println("Succeed!");
+		} else {
+			System.out.println("This author does not exist!");
+		}
 	}
 	public Book() {
 		// TODO

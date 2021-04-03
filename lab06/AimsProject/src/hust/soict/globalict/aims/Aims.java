@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims;
 import hust.soict.globalict.aims.cart.Cart;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.store.Store;
 
 import java.awt.event.ItemEvent;
@@ -22,6 +22,9 @@ public class Aims {
 			choice = keyboard.nextInt();
 			
 			switch (choice) {
+			// choice 0
+				case 0:
+					break;
 			// choice 1
 				case 1: 	
 					int subChoice = 0;

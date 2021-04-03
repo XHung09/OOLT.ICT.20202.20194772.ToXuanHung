@@ -1,30 +1,11 @@
-package hust.soict.globalict.aims.disc;
+package hust.soict.globalict.aims.media;
 import java.time.LocalDate;
-public class DigitalVideoDisc {
-	private String title;
-	private String category;
+
+public class DigitalVideoDisc extends Media {
 	private String director;
 	private int length;
-	private float cost;
 	private LocalDate dateAdded;
-	private int id;
 	private static int nbDigitalVideoDiscs = 0;
-	
-	public int getId() {
-		return id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getCategory() {
-		return category;
-	}
 	
 	public String getDirector() {
 		return director;
@@ -32,10 +13,6 @@ public class DigitalVideoDisc {
 	
 	public int getLength() {
 		return length;
-	}
-	
-	public float getCost() {
-		return cost;
 	}
 	
 	public DigitalVideoDisc(String title) {

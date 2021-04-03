@@ -22,6 +22,10 @@ public class Aims {
 			choice = keyboard.nextInt();
 			
 			switch (choice) {
+			// choice 0
+				case 0: 
+					break;
+			
 			// choice 1
 				case 1: 	
 					int subChoice = 0;
