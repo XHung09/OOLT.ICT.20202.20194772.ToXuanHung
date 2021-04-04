@@ -4,9 +4,6 @@ import java.time.LocalDate;
 public class DigitalVideoDisc extends Media {
 	private String director;
 	private int length;
-	private LocalDate dateAdded;
-	private static int nbDigitalVideoDiscs = 0;
-	
 	public String getDirector() {
 		return director;
 	}
@@ -15,39 +12,34 @@ public class DigitalVideoDisc extends Media {
 		return length;
 	}
 	
+	// Constructors
 	public DigitalVideoDisc(String title) {
-		super();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
-		this.dateAdded = LocalDate.now();
-		this.title = title;
+		super(title);
+		this.id = nbMedia;
+		++nbMedia;
+		super.dateAdded = LocalDate.now();
 	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
-		super();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
-		this.dateAdded = LocalDate.now();
-		this.title = title;
-		this.category = category;
+		super(title, category);
+		this.id = nbMedia;
+		++nbMedia;
+		super.dateAdded = LocalDate.now();
 		this.cost = cost;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
-		this.dateAdded = LocalDate.now();
-		this.title = title;
-		this.category = category;
+		super(title, category, cost);
+		this.id = nbMedia;
+		++nbMedia;
+		super.dateAdded = LocalDate.now();
 		this.director = director;
-		this.cost = cost;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
-		nbDigitalVideoDiscs++;
-		this.id = nbDigitalVideoDiscs;
+		super(title, category, cost);
+		this.id = nbMedia;
+		++nbMedia;
 		this.dateAdded = LocalDate.now();
 		this.title = title;
 		this.category = category;

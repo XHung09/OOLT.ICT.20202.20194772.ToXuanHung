@@ -11,7 +11,7 @@ public class CartTest {
 		DigitalVideoDisc dvd5 = new DigitalVideoDisc("EEEE", "eeee", "eeee", 5, 3.3f);
 		
 		Cart anOrder = new Cart();
-		anOrder.addDigitalVideoDisc(new DigitalVideoDisc[] {dvd1, dvd2, dvd3, dvd4, dvd5});
+		anOrder.addMedia(new DigitalVideoDisc[] {dvd1, dvd2, dvd3, dvd4, dvd5});
 		anOrder.printCart();
 		
 		// sort the current cart by Cost

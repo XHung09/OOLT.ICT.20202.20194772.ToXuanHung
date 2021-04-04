@@ -8,8 +8,8 @@ public class Media {
 	protected String title;
 	protected String category;
 	protected float cost;
-	private LocalDate dateAdded;
-	private static int nbMedia = 0;
+	protected LocalDate dateAdded;
+	protected static int nbMedia = 0;
 	
 	public int getId() {
 		return id;
@@ -31,8 +31,54 @@ public class Media {
 		return cost;
 	}
 	
-	public Media() {
-		// TODO Auto-generated constructor stub
+	public void setCost(float cost) {
+		this.cost = cost;
+	}
+	
+	// Constructors
+	public Media(String title, String category, float cost) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+		this.dateAdded = LocalDate.now();
+	}
+	
+	public Media(String title, String category) {
+		super();
+		this.title = title;
+		this.category = category;	
+		this.dateAdded = LocalDate.now();
+	}
+	
+	public Media(String title) {
+		super();
+		this.title = title;	
+		this.dateAdded = LocalDate.now();
+	}
+	
+	// search
+	public boolean search(String title) {
+		boolean flag = true ;
+		int count = 0;
+		String str = this.title.toLowerCase();
+		title = title.toLowerCase();
+		
+		String[] part = title.split(" ") ;
+		for(int i = 0; i < part.length; i++) {
+			if(str.contains(part[i])) {
+				count += 1;
+			}
+		}
+		if (count == 0) {
+			flag = false;
+		}
+		return flag;
 	}
 
+	// get detail
+	public String getDetail() {
+		String item = "ID: " + getId() + " " + getTitle() + " - " + getCategory() + " - " + ": " + getCost() + "$";
+		return item;
+	}
 }
