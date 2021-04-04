@@ -76,9 +76,4 @@ public class Media {
 		return flag;
 	}
 
-	// get detail
-	public String getDetail() {
-		String item = "ID: " + getId() + " " + getTitle() + " - " + getCategory() + " - " + ": " + getCost() + "$";
-		return item;
-	}
 }
