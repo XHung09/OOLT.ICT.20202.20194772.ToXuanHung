@@ -20,8 +20,8 @@ public class Book extends Media {
 		super.dateAdded = LocalDate.now();
 	}
 	
-	public Book(String title, String category) {
-		super(title, category);
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
 		this.id = nbMedia;
 		++nbMedia;
 		super.dateAdded = LocalDate.now();

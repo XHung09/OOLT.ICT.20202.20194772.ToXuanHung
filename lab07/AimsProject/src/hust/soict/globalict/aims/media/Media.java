@@ -36,6 +36,10 @@ public abstract class Media {
 	}
 	
 	// Constructors
+	public Media() {
+		super();
+	}
+	
 	public Media(String title, String category, float cost) {
 		super();
 		this.title = title;

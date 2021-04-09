@@ -80,10 +80,13 @@ public class Aims {
 							keyboard.nextLine();
 							System.out.print("Title: ");
 				    		String title = keyboard.nextLine();
+				    		
 				    		System.out.print("Category: ");
 				    		String category = keyboard.nextLine();
+				    		
 				    		System.out.print("Director: ");
 				    		String director = keyboard.nextLine();
+				    		
 				    		System.out.print("Length: ");
 				    		int length = keyboard.nextInt();
 				    	 
@@ -117,11 +120,11 @@ public class Aims {
 							System.out.print("Cost: ");
 							Float cost = keyboard.nextFloat();
 							
-							Book book = new Book(title, category);
+							Book book = new Book(title, category, cost);
 							for (int i = 0; i < authors.length; i++) {
 								book.addAuthor(authors[i]);
 							}
-							book.setCost(cost);
+
 							anItem.addMedia(book);
 				    	} else {
 							System.out.println("Wrong choice!");
