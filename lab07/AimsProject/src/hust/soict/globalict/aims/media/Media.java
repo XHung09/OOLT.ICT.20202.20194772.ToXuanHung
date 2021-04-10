@@ -18,10 +18,6 @@ public abstract class Media {
 	public String getTitle() {
 		return title;
 	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getCategory() {
 		return category;
@@ -31,15 +27,11 @@ public abstract class Media {
 		return cost;
 	}
 	
-	public void setCost(float cost) {
-		this.cost = cost;
+	public void freeCost() {
+		this.cost = 0;
 	}
 	
 	// Constructors
-	public Media() {
-		super();
-	}
-	
 	public Media(String title, String category, float cost) {
 		super();
 		this.title = title;

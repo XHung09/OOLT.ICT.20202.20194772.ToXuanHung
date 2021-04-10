@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
@@ -65,8 +64,8 @@ public class Cart {
 	}
 	
 	// Total cost
-	public double totalCost() {
-		double sum = 0.0;
+	public float totalCost() {
+		float sum = 0.0f;
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			sum += itemsOrdered.get(i).getCost();
 		}
@@ -161,6 +160,6 @@ public class Cart {
 	// get a lucky item
 	public void getALuckyItem() {
         int rand = (int)(Math.random() * itemsOrdered.size()) + 0;
-        itemsOrdered.get(rand).setCost(0);
+        itemsOrdered.get(rand).freeCost();
     }
 }

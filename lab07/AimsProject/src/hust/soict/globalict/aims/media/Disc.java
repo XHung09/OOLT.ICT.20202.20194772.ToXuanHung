@@ -15,10 +15,6 @@ public class Disc extends Media {
 		return length;
 	}
 	
-	public Disc() {
-		super();
-	}
-	
 	// Constructors
 	public Disc(String title) {
 		super(title);

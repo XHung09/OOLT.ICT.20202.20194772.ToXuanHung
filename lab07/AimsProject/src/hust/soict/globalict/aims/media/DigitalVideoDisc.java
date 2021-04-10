@@ -1,10 +1,29 @@
 package hust.soict.globalict.aims.media;
-import java.time.LocalDate;
 
-public class DigitalVideoDisc extends Disc {
-	
-	public DigitalVideoDisc() {
-		super();
+public class DigitalVideoDisc extends Disc implements Playable {
+
+	public DigitalVideoDisc(String title) {
+		super(title);
+		++nbMedia;
+		this.id = nbMedia;
+	}
+
+	public DigitalVideoDisc(String title, String category, float cost) {
+		super(title, category, cost);
+		++nbMedia;
+		this.id = nbMedia;
+	}
+
+	public DigitalVideoDisc(String title, String category, String director, float cost) {
+		super(title, category, director, cost);
+		++nbMedia;
+		this.id = nbMedia;
+	}
+
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+		super(title, category, director, length, cost);
+		++nbMedia;
+		this.id = nbMedia;
 	}
 	
 	// get detail
@@ -13,6 +32,12 @@ public class DigitalVideoDisc extends Disc {
 					+ getLength() + ": " + getCost() + "$";
 		
 		return dvd;
+	}
+	
+	// play
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
 	}
 	
 	// search
@@ -33,4 +58,5 @@ public class DigitalVideoDisc extends Disc {
 		}
 		return flag;
 	}
+	
 }

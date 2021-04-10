@@ -1,8 +1,13 @@
 package hust.soict.globalict.aims;
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.store.Store;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Aims {
@@ -13,6 +18,7 @@ public class Aims {
 		int mediaChoice = 0;
 		Cart anOrder = new Cart();
 		Store anItem = new Store();
+		List<Track> trackList = new ArrayList<Track>();
 		Scanner keyboard = new Scanner(System.in);
 		
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
@@ -73,12 +79,12 @@ public class Aims {
 				case 2:												
 					System.out.println("Add or Remove a media: \n1. Add a media \n2. Remove a media");
 					subChoice = keyboard.nextInt();
-					System.out.println("1. DVD\n2. Book");
+					System.out.println("1. DVD \n2. Book \n3. CD");
 					if (subChoice == 1) {
 						mediaChoice = keyboard.nextInt();
-						if (mediaChoice == 1) {												// add a dvd										
+						if (mediaChoice == 1) {												// add a DVD										
 							keyboard.nextLine();
-							System.out.print("Title: ");
+							System.out.print("DVD title: ");
 				    		String title = keyboard.nextLine();
 				    		
 				    		System.out.print("Category: ");
@@ -96,11 +102,10 @@ public class Aims {
 				    		}
 				    	 
 				    		System.out.print("Cost: ");
-				    		float cost = (float) keyboard.nextDouble();
-				    	 
+				    		float cost = keyboard.nextFloat();				    	 
 				    		while (cost <= 0) {
 				    			System.out.println("Cost must be positive!");
-				    			cost = (float) keyboard.nextDouble();
+				    			cost = keyboard.nextFloat();
 				    		}
 				    	 
 				    		DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
@@ -119,13 +124,50 @@ public class Aims {
 							
 							System.out.print("Cost: ");
 							Float cost = keyboard.nextFloat();
-							
+				    		while (cost <= 0) {
+				    			System.out.println("Cost must be positive!");
+				    			cost = keyboard.nextFloat();
+				    		}
+				    		
 							Book book = new Book(title, category, cost);
 							for (int i = 0; i < authors.length; i++) {
 								book.addAuthor(authors[i]);
 							}
 
 							anItem.addMedia(book);
+				    	} else if (subChoice == 3) {										// add a CD
+				      		keyboard.nextLine();
+				    		System.out.print("CD title: ");
+							String title = keyboard.nextLine();
+							
+							System.out.print("Category: ");
+							String category = keyboard.nextLine();
+							
+							System.out.print("Director: ");
+							String director = keyboard.nextLine();
+							
+							System.out.print("Artist: ");
+							String artist = keyboard.nextLine();
+							
+							System.out.print("Cost: ");
+							Float cost = keyboard.nextFloat();
+				    		while (cost <= 0) {
+				    			System.out.println("Cost must be positive!");
+				    			cost = keyboard.nextFloat();
+				    		}
+				    		
+							CompactDisc cd = new CompactDisc(title, category, director, artist, cost);
+							
+							System.out.print("Number of tracks: ");
+							int n = keyboard.nextInt();
+							for (int i = 0; i < n; i++) {
+								System.out.print("Track's title: ");
+								String trackTitle = keyboard.nextLine();
+								System.out.print("Track's length: ");
+								int trackLength = keyboard.nextInt();
+								trackList.add(i, new Track(trackTitle, trackLength));
+								cd.addTrack(trackList.get(i));
+							}
 				    	} else {
 							System.out.println("Wrong choice!");
 				    	}
