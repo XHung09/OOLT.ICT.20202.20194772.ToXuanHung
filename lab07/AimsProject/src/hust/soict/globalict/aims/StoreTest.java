@@ -31,7 +31,7 @@ public class StoreTest {
 		// search for a dvd
 		System.out.print("Search for ID: ");
 		int id = keyboard.nextInt();
-		anItem.searchIdMedia(id);
+		anItem.searchId(id);
 		
 		// remove a dvd
 		anItem.removeMedia(dvd5);

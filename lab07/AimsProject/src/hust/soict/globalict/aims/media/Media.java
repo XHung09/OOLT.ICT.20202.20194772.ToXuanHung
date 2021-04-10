@@ -34,6 +34,8 @@ public abstract class Media {
 	// Constructors
 	public Media(String title, String category, float cost) {
 		super();
+		this.id = nbMedia;
+		++nbMedia;
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
@@ -42,6 +44,8 @@ public abstract class Media {
 	
 	public Media(String title, String category) {
 		super();
+		this.id = nbMedia;
+		++nbMedia;
 		this.title = title;
 		this.category = category;	
 		this.dateAdded = LocalDate.now();
@@ -49,6 +53,8 @@ public abstract class Media {
 	
 	public Media(String title) {
 		super();
+		this.id = nbMedia;
+		++nbMedia;
 		this.title = title;	
 		this.dateAdded = LocalDate.now();
 	}

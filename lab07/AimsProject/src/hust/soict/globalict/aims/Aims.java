@@ -48,7 +48,7 @@ public class Aims {
 						case 1:
 							System.out.print("Search for ID: ");
 							int id = keyboard.nextInt();
-							anItem.searchIdMedia(id);
+							anItem.searchId(id);
 							System.out.println("Do you want to add this to your cart? \nChoice: 1 for Yes - 2 for No");
 							subChoice = keyboard.nextInt();
 							if (subChoice == 1) {
@@ -57,14 +57,29 @@ public class Aims {
 							break;
 							
 						case 2:
-							System.out.println("Enter the ID of DVD that you want to add to your cart:");
+							System.out.println("Enter the ID of the DVD that you want to add to your cart:");
 							anItem.printStore();
+							
 							id = keyboard.nextInt();
-							anItem.searchIdMedia(id);
-							anOrder.addMedia(anItem.discList(id));
+							if (anItem.searchId(id)) {
+								anOrder.addMedia(anItem.discList(id));
+							}
+
 							break;
 							
 						case 3:
+							keyboard.nextLine();
+							System.out.println("Enter the ID of the media that you want to play (only disc allowed):");
+							anItem.printStore();
+							
+							id = keyboard.nextInt();
+							if (anItem.searchId(id)) {
+								anItem.play(id);
+							}
+							
+							break;
+							
+						case 4:
 							anOrder.printCart();
 							break;
 							
@@ -135,7 +150,7 @@ public class Aims {
 							}
 
 							anItem.addMedia(book);
-				    	} else if (subChoice == 3) {										// add a CD
+				    	} else if (mediaChoice == 3) {										// add a CD
 				      		keyboard.nextLine();
 				    		System.out.print("CD title: ");
 							String title = keyboard.nextLine();
@@ -161,12 +176,16 @@ public class Aims {
 							System.out.print("Number of tracks: ");
 							int n = keyboard.nextInt();
 							for (int i = 0; i < n; i++) {
+					      		keyboard.nextLine();
 								System.out.print("Track's title: ");
 								String trackTitle = keyboard.nextLine();
+								
 								System.out.print("Track's length: ");
 								int trackLength = keyboard.nextInt();
+								
 								trackList.add(i, new Track(trackTitle, trackLength));
 								cd.addTrack(trackList.get(i));
+								anItem.addMedia(cd);
 							}
 				    	} else {
 							System.out.println("Wrong choice!");
@@ -195,9 +214,9 @@ public class Aims {
 							System.out.println("Filter by ID or by Title: \nchoose a number: 1-2");
 							subChoice = keyboard.nextInt();
 							if (subChoice == 1) {
-								anOrder.searchIdDigitalVideoDisc();
+								anOrder.searchIdMedia();
 							} else if (subChoice == 2) {
-								anOrder.searchTitleDigitalVideoDisc();
+								anOrder.searchTitleMedia();
 							}
 							break;
 						
@@ -219,11 +238,23 @@ public class Aims {
 							break;
 							
 						case 4:
+							keyboard.nextLine();
+							System.out.println("Enter the ID of the media that you want to play (only disc allowed):");
+							anOrder.printCart();
+							
+							id = keyboard.nextInt();
+							if (anOrder.searchId(id)) {
+								anOrder.play(id);
+							}
+							
+							break;
+							
+						case 5:
 							anOrder.getALuckyItem();
 							System.out.println("You will get a random free item. Hooray!");
 							break;
 							
-						case 5:												
+						case 6:												
 							System.out.println("An order has been created\n");
 							break;
 							
@@ -263,7 +294,8 @@ public class Aims {
 		System.out.println("----------------------------------------------------------------------");
 		System.out.println("1. See a media's details");
 		System.out.println("2. Add a media to current cart");
-		System.out.println("3. See current cart");
+		System.out.println("3. Play a media");
+		System.out.println("4. See current cart");
 		System.out.println("0. Exit");
 		System.out.println("----------------------------------------------------------------------");
 		System.out.println("Please choose a number: 0-1-2-3");
@@ -276,8 +308,9 @@ public class Aims {
 		System.out.println("1. Filter medias in cart");
 		System.out.println("2. Sort medias in cart");
 		System.out.println("3. Remove media from cart");
-		System.out.println("4. Get a lucky item in cart");
-		System.out.println("5. Place order");
+		System.out.println("4. Play a media");
+		System.out.println("5. Get a lucky item in cart");
+		System.out.println("6. Place order");
 		System.out.println("0. Exit");
 		System.out.println("----------------------------------------------------------------------");
 	}

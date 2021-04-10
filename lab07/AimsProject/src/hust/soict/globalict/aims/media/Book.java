@@ -14,31 +14,23 @@ public class Book extends Media {
 	// Constructors
 	public Book(String title, String category, float cost, List<String> authors) {
 		super(title, category, cost);
-		this.id = nbMedia;
-		++nbMedia;
 		this.authors = authors;
 		super.dateAdded = LocalDate.now();
 	}
 	
 	public Book(String title, String category, float cost) {
 		super(title, category, cost);
-		this.id = nbMedia;
-		++nbMedia;
 		super.dateAdded = LocalDate.now();
 	}
 	
 	public Book(String title, String category, List<String> authors) {
 		super(title, category);
-		this.id = nbMedia;
-		++nbMedia;
 		this.authors = authors;
 		super.dateAdded = LocalDate.now();
 	}
 	
 	public Book(String title, List<String> authors) {
 		super(title);
-		this.id = nbMedia;
-		++nbMedia;
 		this.authors = authors;
 		super.dateAdded = LocalDate.now();
 	}
@@ -47,7 +39,6 @@ public class Book extends Media {
 	public void addAuthor(String authorName) {
 		if (authors.contains(authorName) == false) {
 			authors.add(authorName);
-			System.out.println("Succeed!");
 		} else {
 			System.out.println("This author has already existed!");
 		}
@@ -57,7 +48,6 @@ public class Book extends Media {
 	public void removeAuthor(String authorName) {
 		if (authors.contains(authorName) == true) {
 			authors.remove(authorName);
-			System.out.println("Succeed!");
 		} else {
 			System.out.println("This author does not exist!");
 		}

@@ -4,26 +4,18 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
 	public DigitalVideoDisc(String title) {
 		super(title);
-		++nbMedia;
-		this.id = nbMedia;
 	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
-		++nbMedia;
-		this.id = nbMedia;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super(title, category, director, cost);
-		++nbMedia;
-		this.id = nbMedia;
 	}
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super(title, category, director, length, cost);
-		++nbMedia;
-		this.id = nbMedia;
 	}
 	
 	// get detail
@@ -37,7 +29,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	// play
 	public void play() {
 		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		if (this.getLength() > 0) {
+			System.out.println("DVD length: " + this.getLength() + "\n");
+		} else {
+			System.out.println("This DVD cannot be played!\n");
+		}
 	}
 	
 	// search

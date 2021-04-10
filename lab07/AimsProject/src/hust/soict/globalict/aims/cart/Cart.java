@@ -1,5 +1,6 @@
 package hust.soict.globalict.aims.cart;
 import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.MediaCostComparator;
@@ -86,7 +87,7 @@ public class Cart {
 	}
 	
 	// search dvd by id
-	public void searchIdDigitalVideoDisc() {
+	public void searchIdMedia() {
 		boolean flag = false;
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -105,9 +106,25 @@ public class Cart {
 		
 		keyboard.close();
 	}
+
+	// search media by id
+	public boolean searchId(int id) {
+		boolean flag = false;
+			
+		for (int i = 0; i < itemsOrdered.size(); i++) {
+			if (id == itemsOrdered.get(i).getId()) {
+				flag = true;
+			} 
+		}
+		
+		if (flag == false) {
+			System.out.println("ID not found!");
+		}	
+		return flag;
+	}
 	
 	// search dvd by title
-	public void searchTitleDigitalVideoDisc() {
+	public void searchTitleMedia() {
 		boolean flag = false;
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -149,6 +166,16 @@ public class Cart {
 				System.out.print(book.getCategory() + " - ");
 				System.out.print(book.getAuthors() + " - ");
 				System.out.println(book.getCost() + "$");
+			} else if (itemsOrdered.get(i) instanceof CompactDisc) {
+				CompactDisc cd = (CompactDisc)itemsOrdered.get(i);
+				System.out.print("ID: " + cd.getId() + " - #" + (i+1) + ". CD - ");
+				System.out.print(cd.getTitle() + " - ");
+				System.out.print(cd.getCategory() + " - ");
+				System.out.print(cd.getDirector() + " - ");
+				System.out.print(cd.getArtist() + " - ");
+				System.out.print(cd.getLength() + ": ");
+				System.out.println(cd.getCost() + "$");
+				cd.play();
 			}
 		}
 		System.out.print("Total cost: ");
@@ -162,4 +189,16 @@ public class Cart {
         int rand = (int)(Math.random() * itemsOrdered.size()) + 0;
         itemsOrdered.get(rand).freeCost();
     }
+	
+	// play
+	public void play(int id) {
+		if (itemsOrdered.get(id) instanceof DigitalVideoDisc) {
+			DigitalVideoDisc dvd = (DigitalVideoDisc)itemsOrdered.get(id);
+			dvd.play();
+		} else if (itemsOrdered.get(id) instanceof CompactDisc) {
+			CompactDisc cd = (CompactDisc)itemsOrdered.get(id);
+			cd.play();
+		}
+	}
+	
 }

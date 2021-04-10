@@ -16,7 +16,7 @@ public class DiskTest {
 		anOrder.printCart();
 			
 		// search by Title
-		anOrder.searchTitleDigitalVideoDisc();
+		anOrder.searchTitleMedia();
 	}
 }
 	

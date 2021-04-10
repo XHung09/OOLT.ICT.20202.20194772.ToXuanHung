@@ -25,32 +25,24 @@ public class CompactDisc extends Disc implements Playable {
 	// constructors
 	public CompactDisc(String title, String artist, List<Track> tracks) {
 		super(title);
-		++nbMedia;
-		this.id = nbMedia;
 		this.artist = artist;
 		this.tracks = tracks;
 	}
 
 	public CompactDisc(String title, String category, String artist, List<Track> tracks, float cost) {
 		super(title, category, cost);
-		++nbMedia;
-		this.id = nbMedia;
 		this.artist = artist;
 		this.tracks = tracks;
 	}
 
 	public CompactDisc(String title, String category, String director, String artist, List<Track> tracks, float cost) {
 		super(title, category, director, cost);
-		++nbMedia;
-		this.id = nbMedia;
 		this.artist = artist;
 		this.tracks = tracks;
 	}
 
 	public CompactDisc(String title, String category, String director, String artist, float cost) {
 		super(title, category, director, cost);
-		++nbMedia;
-		this.id = nbMedia;
 		this.artist = artist;
 	}	
 	
@@ -58,7 +50,6 @@ public class CompactDisc extends Disc implements Playable {
 	public void addTrack(Track track) {
 		if (tracks.contains(track) == false) {
 			tracks.add(track);
-			System.out.println("Succeed!");
 		} else {
 			System.out.println("This track has already existed!");
 		}
@@ -68,20 +59,27 @@ public class CompactDisc extends Disc implements Playable {
 	public void removeTrack(Track track) {
 		if (tracks.contains(track) == true) {
 			tracks.remove(track);
-			System.out.println("Succeed!");
 		} else {
 			System.out.println("This track does not exist!");
 		}
 	}
 	
+	// get detail
+	public String getDetail() {
+		String dvd = "CD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " 
+					+ getLength() + ": " + getCost() + "$";
+		
+		return dvd;
+	}
+	
 	// play
 	public void play() {
-        System.out.println("____________________ ____________________");
-        System.out.println("artist: " + artist);
+        System.out.println("________________________________________");
+        System.out.println("ARTIST: \n" + artist);
         for(int i = 0; i < tracks.size(); i++) {
             tracks.get(i).play();
         }
-        System.out.println("____________________ ____________________");
+        System.out.println("________________________________________");
     }
 	
 }
