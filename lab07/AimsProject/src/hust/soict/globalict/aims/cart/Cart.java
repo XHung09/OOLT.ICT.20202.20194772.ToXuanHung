@@ -198,6 +198,8 @@ public class Cart {
 		} else if (itemsOrdered.get(id) instanceof CompactDisc) {
 			CompactDisc cd = (CompactDisc)itemsOrdered.get(id);
 			cd.play();
+		} else {
+			System.out.println("Fail to play book!");
 		}
 	}
 	

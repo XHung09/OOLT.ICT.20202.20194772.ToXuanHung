@@ -128,6 +128,8 @@ public class Store {
 		} else if (itemsInStore.get(id) instanceof CompactDisc) {
 			CompactDisc cd = (CompactDisc)itemsInStore.get(id);
 			cd.play();
+		} else {
+			System.out.println("Fail to play book!");
 		}
 	}
 }

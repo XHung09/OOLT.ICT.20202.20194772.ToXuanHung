@@ -21,6 +21,11 @@ public class Aims {
 		List<Track> trackList = new ArrayList<Track>();
 		Scanner keyboard = new Scanner(System.in);
 		
+		MemoryDaemon daemon = new MemoryDaemon();
+		Thread someThread = new Thread(daemon);
+		someThread.setDaemon(true);
+		someThread.start();
+		
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		anItem.addMedia(dvd1);
 		

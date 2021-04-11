@@ -74,12 +74,10 @@ public class CompactDisc extends Disc implements Playable {
 	
 	// play
 	public void play() {
-        System.out.println("________________________________________");
-        System.out.println("ARTIST: \n" + artist);
+        System.out.println("____________________ ARTIST: " + artist + " ____________________");
         for(int i = 0; i < tracks.size(); i++) {
             tracks.get(i).play();
         }
-        System.out.println("________________________________________");
     }
 	
 }
