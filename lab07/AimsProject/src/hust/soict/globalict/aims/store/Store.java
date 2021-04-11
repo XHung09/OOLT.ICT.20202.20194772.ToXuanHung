@@ -24,9 +24,7 @@ public class Store {
 		if ((itemsInStore.contains(item) == false) && (itemsInStore.size() < MAX_ITEM_NUMBER)) {
 			itemsInStore.add(item);
 			System.out.println("Succeed!");
-		} else {
-			System.out.println("Fail!");
-		}
+		} 
 	}
 	
 	// Add a media list by passing an arbitrary number of arguments
@@ -35,9 +33,7 @@ public class Store {
 			if ((itemsInStore.contains(item) == false) && (itemsInStore.size() < MAX_ITEM_NUMBER)) {
 				this.addMedia(item);
 				System.out.println("Succeed!");
-			} else {
-				System.out.println("Fail!");
-			}
+			} 
 		}
 	} 
 	
@@ -50,9 +46,7 @@ public class Store {
 			if (itemsInStore.contains(item) == true) {
 				itemsInStore.add(item);
 				System.out.println("Succeed!");
-			} else {
-				System.out.println("Fail!");
-			}
+			} 
 		}	
 	}
 	

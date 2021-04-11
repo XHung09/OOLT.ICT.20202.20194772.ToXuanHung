@@ -20,11 +20,7 @@ public class Cart {
 		if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
 			itemsOrdered.add(item);
 			System.out.println("Succeed!");
-		} else if (item == null) {
-			System.out.println("Fail!");
-		} else {
-			System.out.println("Fail!");
-		}
+		} 
 	}
 	
 	// Add a dvd list by passing an arbitrary number of arguments
@@ -33,9 +29,7 @@ public class Cart {
 			if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
 				this.addMedia(item);
 				System.out.println("Succeed!");
-			} else {
-				System.out.println("Fail!");
-			}
+			} 
 		}
 	}
 	
@@ -48,9 +42,7 @@ public class Cart {
 			if (itemsOrdered.contains(item) == true) {
 				itemsOrdered.add(item);
 				System.out.println("Succeed!");
-			} else {
-				System.out.println("Fail!");
-			}
+			} 
 		}	
 	}
 	
@@ -59,9 +51,7 @@ public class Cart {
 		if (itemsOrdered.contains(itemsOrdered.get(id))) {
 			itemsOrdered.remove(id);
 			System.out.println("Succeed!");
-		} else {
-			System.out.println("Fail!");
-		}
+		} 
 	}
 	
 	// Total cost

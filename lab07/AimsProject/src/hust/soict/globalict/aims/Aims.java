@@ -277,7 +277,7 @@ public class Aims {
 			
 		} while (choice != 0);
 	
-		System.out.print("Goodbye");
+		System.out.print("Goodbye\n");
 		keyboard.close();
 	}
 
