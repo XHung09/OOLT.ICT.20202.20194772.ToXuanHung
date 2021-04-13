@@ -1,11 +1,17 @@
 package hust.soict.globalict.aims.media;
 import java.time.LocalDate;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.HashMap;
 
 public class Book extends Media {
 
 	private List<String> authors = new ArrayList<String>();
+	private int contentLength;
+	private String tokenList[];
+	private int tokenLength[];
 	
 	public List<String> getAuthors() {
 		return authors;
@@ -34,7 +40,30 @@ public class Book extends Media {
 		this.authors = authors;
 		super.dateAdded = LocalDate.now();
 	}
+	
+	// add content and check token
+	public void addContent() {
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Enter the content of this book: ");
+		String content = keyboard.nextLine();
+		
+		String contentSplit[] = content.split(" ");
+		HashMap<String, Integer> freqMap = new HashMap<String, Integer>(); 
 
+		for (int i = 0; i < contentSplit.length; i++) {
+			String token = contentSplit[i];
+			int freq = freqMap.getOrDefault(token, 0);
+			freqMap.put(token, ++freq);
+		}
+		
+        for (Entry<String, Integer> result : freqMap.entrySet()) {
+            System.out.println(result.getKey() + " " + result.getValue());
+            
+        }
+		
+		keyboard.close();
+	}
+	
 	// add author
 	public void addAuthor(String authorName) {
 		if (authors.contains(authorName) == false) {
