@@ -1,22 +1,29 @@
 package hust.soict.globalict.aims.media;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.HashMap;
+import java.util.TreeMap; 
 
 public class Book extends Media {
 
 	private List<String> authors = new ArrayList<String>();
 	private int contentLength;
-	private String tokenList[];
-	private int tokenLength[];
+	private List<String> contentTokens = new ArrayList<String>();
+	private TreeMap<String, Integer> wordFrequency;
+	private String content;
 	
+	// Getters
 	public List<String> getAuthors() {
 		return authors;
 	}
 
+	public int getContentLength() {
+		return contentLength;
+	}
+	
 	// Constructors
 	public Book(String title, String category, float cost, List<String> authors) {
 		super(title, category, cost);
@@ -41,27 +48,35 @@ public class Book extends Media {
 		super.dateAdded = LocalDate.now();
 	}
 	
-	// add content and check token
+	// add content and check content tokens
 	public void addContent() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Enter the content of this book: ");
-		String content = keyboard.nextLine();
+		this.content = keyboard.nextLine();
+	}
+	
+	public void processContent() {
+		this.wordFrequency = new TreeMap<String, Integer>();
+		String contentSplit[] = this.content.split("[\\p{Punct}\\s]+");
 		
-		String contentSplit[] = content.split(" ");
-		HashMap<String, Integer> freqMap = new HashMap<String, Integer>(); 
-
-		for (int i = 0; i < contentSplit.length; i++) {
-			String token = contentSplit[i];
-			int freq = freqMap.getOrDefault(token, 0);
-			freqMap.put(token, ++freq);
+		for (String s : contentSplit) {
+			Integer count = wordFrequency.get(s);
+			if (count != null) {
+				wordFrequency.put(s, ++count);
+			} else {
+				wordFrequency.put(s, 1);
+			}
 		}
 		
-        for (Entry<String, Integer> result : freqMap.entrySet()) {
-            System.out.println(result.getKey() + " " + result.getValue());
-            
-        }
-		
-		keyboard.close();
+		Set<Entry<String, Integer>> entries = wordFrequency.entrySet();
+		for (Entry<String, Integer> entryElement : entries) {
+			if (entryElement.getKey() != null) {
+				contentTokens.add(entryElement.getKey());
+				this.contentLength++;
+			}
+
+			System.out.println(entryElement.getKey() + ": " + entryElement.getValue());
+		}
 	}
 	
 	// add author
@@ -82,10 +97,12 @@ public class Book extends Media {
 		}
 	}
 	
-	// get detail
+	// override toString()
 	public String getDetail() {
-		String book = "Book - " + getTitle() + " - " + getCategory() + " - " 
-						+ getAuthors()  + ": " + getCost() + "$";
+		String book = "BOOK - " + getTitle() + " - " + getCategory() + " - " 
+						+ getAuthors()  + " - Content length: " + getContentLength() 
+						+": " + getCost() + "$\n" 
+						+ "Token list: " +this.wordFrequency;
 		
 		return book;
 	}

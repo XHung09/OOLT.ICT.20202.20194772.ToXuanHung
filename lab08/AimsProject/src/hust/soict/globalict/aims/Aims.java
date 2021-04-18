@@ -7,6 +7,7 @@ import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.store.Store;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -154,8 +155,11 @@ public class Aims {
 							Book book = new Book(title, category, cost);
 							for (int i = 0; i < authors.length; i++) {
 								book.addAuthor(authors[i]);
-							}
-
+							}			
+							
+							book.addContent();
+							book.processContent();
+							
 							anItem.addMedia(book);
 				    	} else if (mediaChoice == 3) {										// add a CD
 				      		keyboard.nextLine();
@@ -228,12 +232,18 @@ public class Aims {
 							break;
 						
 						case 2:
-							System.out.println("Sort by Title or by Cost: \nchoose a number: 1-2");
+							System.out.println("Sort by: "
+									+ "\n1. TitleCost "
+									+ "\n2.CostTitle "
+									+ "\n3. TitleCategory: "
+									+ "\nchoose a number: 1-2-3");
 							subChoice = keyboard.nextInt();
 							if (subChoice == 1) {
-								anOrder.sortCartByTitle();
+								anOrder.sortCartByTitleCost();
 							} else if (subChoice == 2) {
-								anOrder.sortCartByCost();
+								anOrder.sortCartByCostTitle();
+							} else if (subChoice == 3) {
+								anOrder.sortCartByTitleCategory();
 							}
 							break;
 							

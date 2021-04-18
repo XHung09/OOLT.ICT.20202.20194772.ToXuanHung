@@ -1,7 +1,7 @@
 package hust.soict.globalict.aims.media;
 import java.util.Comparator;
 
-public class MediaCostComparator implements Comparator<Media> {
+public class MediaComparatorByCostTitle implements Comparator<Media> {
 
 	@Override
 	public int compare(Media item1, Media item2) {
@@ -10,7 +10,7 @@ public class MediaCostComparator implements Comparator<Media> {
 		} else if (item1.getCost() > item2.getCost()) {
 			return -1;
 		} else {
-       	 return item1.getTitle().compareTo(item2.getTitle());
+       	 	return item1.getTitle().compareTo(item2.getTitle());
 		}
 	}
 

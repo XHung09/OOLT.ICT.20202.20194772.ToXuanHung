@@ -7,6 +7,7 @@ public class CompactDisc extends Disc implements Playable {
 	
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
+	private static int nbTrack = 0;
 
 	// getter
 	public String getArtist() {
@@ -20,6 +21,10 @@ public class CompactDisc extends Disc implements Playable {
 		}
 		
 		return totalLength;
+	}
+	
+	public static int getNbTrack() {
+		return nbTrack;
 	}
 	
 	// constructors
@@ -50,6 +55,7 @@ public class CompactDisc extends Disc implements Playable {
 	public void addTrack(Track track) {
 		if (tracks.contains(track) == false) {
 			tracks.add(track);
+			++nbTrack;
 		} else {
 			System.out.println("This track has already existed!");
 		}
@@ -59,6 +65,7 @@ public class CompactDisc extends Disc implements Playable {
 	public void removeTrack(Track track) {
 		if (tracks.contains(track) == true) {
 			tracks.remove(track);
+			--nbTrack;
 		} else {
 			System.out.println("This track does not exist!");
 		}
@@ -66,15 +73,16 @@ public class CompactDisc extends Disc implements Playable {
 	
 	// get detail
 	public String getDetail() {
-		String dvd = "CD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " 
-					+ getLength() + ": " + getCost() + "$";
+		String cd = "CD - " + getTitle() + " - " + getCategory() + " - " + getDirector() 
+					+ " - " + getNbTrack() + " - "+ getLength() + ": " + getCost() + "$";
 		
-		return dvd;
+		return cd;
 	}
 	
 	// play
 	public void play() {
-        System.out.println("____________________ ARTIST: " + artist + " ____________________");
+        System.out.println("Playing CD: " + title);
+        System.out.println("ARTIST: " + artist);
         for(int i = 0; i < tracks.size(); i++) {
             tracks.get(i).play();
         }

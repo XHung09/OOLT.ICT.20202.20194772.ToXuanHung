@@ -3,9 +3,7 @@ import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
-import hust.soict.globalict.aims.media.MediaCostComparator;
 import hust.soict.globalict.aims.media.MediaLengthComparator;
-import hust.soict.globalict.aims.media.MediaTitleComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +26,6 @@ public class Cart {
 		for(Media item : itemList) {
 			if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
 				this.addMedia(item);
-				System.out.println("Succeed!");
 			} 
 		}
 	}
@@ -64,16 +61,20 @@ public class Cart {
 	}
 	
 	// Sort the cart	
-	public void sortCartByCost() {
-		Collections.sort(itemsOrdered, new MediaCostComparator());
+	public void sortCartByCostTitle() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
 	}
 	
-	public void sortCartByTitle() {
-		Collections.sort(itemsOrdered, new MediaTitleComparator());
+	public void sortCartByTitleCost() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
 	}
 	
 	public void sortCartByLength() {
 		Collections.sort(itemsOrdered, new MediaLengthComparator());
+	}
+	
+	public void sortCartByTitleCategory() {
+		Collections.sort(itemsOrdered);
 	}
 	
 	// search dvd by id
@@ -143,28 +144,13 @@ public class Cart {
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i) instanceof DigitalVideoDisc) {
 				DigitalVideoDisc dvd = (DigitalVideoDisc)itemsOrdered.get(i);
-				System.out.print("ID: " + dvd.getId() + " - #" + (i+1) + ". DVD - ");
-				System.out.print(dvd.getTitle() + " - ");
-				System.out.print(dvd.getCategory() + " - ");
-				System.out.print(dvd.getDirector() + " - ");
-				System.out.print(dvd.getLength() + ": ");
-				System.out.println(dvd.getCost() + "$");
+				System.out.println("ID: " + dvd.getId() + " - #" + (i+1) + ". " + dvd.getDetail());		
 			} else if (itemsOrdered.get(i) instanceof Book) {
 				Book book = (Book)itemsOrdered.get(i);
-				System.out.print("ID: " + book.getId() + " - #" + (i+1) + ". BOOK - ");
-				System.out.print(book.getTitle() + " - ");
-				System.out.print(book.getCategory() + " - ");
-				System.out.print(book.getAuthors() + " - ");
-				System.out.println(book.getCost() + "$");
+				System.out.println("ID: " + book.getId() + " - #" + (i+1) + ". " + book.getDetail());
 			} else if (itemsOrdered.get(i) instanceof CompactDisc) {
 				CompactDisc cd = (CompactDisc)itemsOrdered.get(i);
-				System.out.print("ID: " + cd.getId() + " - #" + (i+1) + ". CD - ");
-				System.out.print(cd.getTitle() + " - ");
-				System.out.print(cd.getCategory() + " - ");
-				System.out.print(cd.getDirector() + " - ");
-				System.out.print(cd.getArtist() + " - ");
-				System.out.print(cd.getLength() + ": ");
-				System.out.println(cd.getCost() + "$");
+				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.getDetail());
 				cd.play();
 			}
 		}

@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class Track implements Playable {
+public class Track implements Playable, Comparable<Track> {
 	
 	private String title;
 	private int length;
@@ -28,7 +28,7 @@ public class Track implements Playable {
 	public void play() {
 		System.out.println("Playing track: " + this.getTitle());
 		if (this.getLength() > 0) {
-			System.out.println("Track length: " + this.getLength() + "\n");
+			System.out.println("Track length: " + this.getLength());
 		} else {
 			System.out.println("This track cannot be played!\n");
 		}
@@ -47,6 +47,17 @@ public class Track implements Playable {
  		} else {
  			return false;
  		}
+	}
+	
+	// compareTo()
+	@Override
+	public int compareTo(Track obj) {
+		int cmp = this.title.compareTo(obj.title);
+		
+		if (cmp == 0) {
+			cmp = this.length = obj.length;
+		}
+		return cmp;
 	}
 	
 }
