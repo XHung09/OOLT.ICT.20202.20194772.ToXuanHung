@@ -3,7 +3,7 @@
 
 3. The method we have to implement from the Comparable interface is the compareTo() method.
 
-5.
+5. The demo program is provided in hust.soict.globalict.test.media.MediaTest
 - I separated the toString() method in two cases:
    + When toString() has not been overriden yet: In this case, the toString() method returns the string representation of the object so if I want to output this value I 
      may write, for instance, System.out.println(something.toString()). Since this statement will output the hashcode values of the objects, if I want to print out the 
