@@ -63,7 +63,7 @@ public class Store {
 			} else if (itemsInStore.get(i) instanceof CompactDisc) {
 				CompactDisc cd = (CompactDisc)itemsInStore.get(i);
 				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.toString());
-				cd.play();
+				cd.displayTracksDetails();
 			}
 		}
 		System.out.println("***************************************************************************");

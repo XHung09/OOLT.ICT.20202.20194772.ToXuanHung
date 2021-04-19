@@ -154,7 +154,7 @@ public class Cart {
 			} else if (itemsOrdered.get(i) instanceof CompactDisc) {
 				CompactDisc cd = (CompactDisc)itemsOrdered.get(i);
 				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.toString());
-				cd.play();
+				cd.displayTracksDetails();
 			}
 		}
 		System.out.print("Total cost: ");
