@@ -19,11 +19,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	}
 	
 	// get detail
-	public String getDetail() {
-		String dvd = "DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " 
-					+ getLength() + ": " + getCost() + "$";
-		
-		return dvd;
+	public String toString() {
+		return "DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector() 
+				+ " - " + getLength() + ": " + getCost() + "$";
 	}
 	
 	// play

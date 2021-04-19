@@ -81,12 +81,6 @@ public abstract class Media implements Comparable<Media> {
 		return flag;
 	}
 
-	// get detail
-	public String getDetail() {
-		String media = "ID: " + getId() + " " + getTitle() + " - " + getCategory() + " - " + ": " + getCost() + "$";
-		return media;
-	}
-	
 	// override equals() method
 	@Override
 	public boolean equals(Object obj) {	

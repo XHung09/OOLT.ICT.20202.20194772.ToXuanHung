@@ -34,8 +34,7 @@ public class Cart {
 	public void removeMedia(Media item) {
 		if(itemsOrdered.size() <= 0) {
 			System.out.println("Your cart is empty!");
-		}
-		else {
+		} else {
 			if (itemsOrdered.contains(item) == true) {
 				itemsOrdered.add(item);
 				System.out.println("Succeed!");
@@ -45,10 +44,14 @@ public class Cart {
 	
 	// remove media by id
 	public void removeIdMedia(int id) {
-		if (itemsOrdered.contains(itemsOrdered.get(id))) {
+		if (id < itemsOrdered.size()) {
 			itemsOrdered.remove(id);
 			System.out.println("Succeed!");
-		} 
+		} else if (itemsOrdered.size() == 0) { 
+			System.out.println("Your store is empty!");
+		} else {
+			System.out.println("This ID does not exist!");
+		}
 	}
 	
 	// Total cost
@@ -87,7 +90,7 @@ public class Cart {
 		
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (id == itemsOrdered.get(i).getId()) {
-				System.out.println(itemsOrdered.get(i).getDetail());
+				System.out.println(itemsOrdered.get(i).toString());
 				flag = true;
 			} 
 		}
@@ -124,7 +127,7 @@ public class Cart {
 		
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i).search(title) == true) {
-				System.out.println(itemsOrdered.get(i).getDetail());
+				System.out.println(itemsOrdered.get(i).toString());
 				flag = true;
 			} 
 		}
@@ -144,20 +147,19 @@ public class Cart {
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i) instanceof DigitalVideoDisc) {
 				DigitalVideoDisc dvd = (DigitalVideoDisc)itemsOrdered.get(i);
-				System.out.println("ID: " + dvd.getId() + " - #" + (i+1) + ". " + dvd.getDetail());		
+				System.out.println("ID: " + dvd.getId() + " - #" + (i+1) + ". " + dvd.toString());		
 			} else if (itemsOrdered.get(i) instanceof Book) {
 				Book book = (Book)itemsOrdered.get(i);
-				System.out.println("ID: " + book.getId() + " - #" + (i+1) + ". " + book.getDetail());
+				System.out.println("ID: " + book.getId() + " - #" + (i+1) + ". " + book.toString());
 			} else if (itemsOrdered.get(i) instanceof CompactDisc) {
 				CompactDisc cd = (CompactDisc)itemsOrdered.get(i);
-				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.getDetail());
+				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.toString());
 				cd.play();
 			}
 		}
 		System.out.print("Total cost: ");
 		System.out.printf("%.2f$\n", totalCost());
 		System.out.println("***************************************************************************");
-		System.out.println();
 	}
 	
 	// get a lucky item

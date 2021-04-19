@@ -1,9 +1,5 @@
 package hust.soict.globalict.test.cart;
-import java.util.ArrayList;
-import java.util.List;
-
 import hust.soict.globalict.aims.cart.Cart;
-import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 
 public class CartTest {

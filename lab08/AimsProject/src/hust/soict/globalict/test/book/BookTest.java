@@ -16,7 +16,7 @@ public class BookTest {
 		
 		b1.addContent();
 		b1.processContent();
-		System.out.println(b1.getDetail());
+		System.out.println(b1.toString());
 	}
 	
 }

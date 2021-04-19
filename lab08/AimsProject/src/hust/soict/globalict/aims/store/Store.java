@@ -41,8 +41,7 @@ public class Store {
 	public void removeMedia(Media item) {
 		if(itemsInStore.size() <= 0) {
 			System.out.println("Your cart is empty!");
-		}
-		else {
+		} else {
 			if (itemsInStore.contains(item) == true) {
 				itemsInStore.add(item);
 				System.out.println("Succeed!");
@@ -57,18 +56,17 @@ public class Store {
 		for (int i = 0; i < itemsInStore.size(); i++) {
 			if (itemsInStore.get(i) instanceof DigitalVideoDisc) {
 				DigitalVideoDisc dvd = (DigitalVideoDisc)itemsInStore.get(i);
-				System.out.println("ID: " + dvd.getId() + " - #" + (i+1) + ". " + dvd.getDetail());		
+				System.out.println("ID: " + dvd.getId() + " - #" + (i+1) + ". " + dvd.toString());		
 			} else if (itemsInStore.get(i) instanceof Book) {
 				Book book = (Book)itemsInStore.get(i);
-				System.out.println("ID: " + book.getId() + " - #" + (i+1) + ". " + book.getDetail());
+				System.out.println("ID: " + book.getId() + " - #" + (i+1) + ". " + book.toString());
 			} else if (itemsInStore.get(i) instanceof CompactDisc) {
 				CompactDisc cd = (CompactDisc)itemsInStore.get(i);
-				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.getDetail());
+				System.out.println("ID: " + cd.getId() + " - #" + (i+1) + ". " + cd.toString());
 				cd.play();
 			}
 		}
 		System.out.println("***************************************************************************");
-		System.out.println();
 	}
 	
 	// search media by id
@@ -84,16 +82,19 @@ public class Store {
 		if (flag == false) {
 			System.out.println("ID not found!");
 		}	
+		
 		return flag;
 	}
 	
 	// remove media by id
 	public void removeIdMedia(int id) {
-		if (itemsInStore.contains(itemsInStore.get(id))) {
+		if (id < itemsInStore.size()) {
 			itemsInStore.remove(id);
 			System.out.println("Succeed!");
+		} else if (itemsInStore.size() == 0) { 
+			System.out.println("Your store is empty!");
 		} else {
-			System.out.println("Fail!");
+			System.out.println("This ID does not exist!");
 		}
 	}
 	

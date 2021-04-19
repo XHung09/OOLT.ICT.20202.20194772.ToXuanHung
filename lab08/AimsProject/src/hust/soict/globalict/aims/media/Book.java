@@ -50,6 +50,7 @@ public class Book extends Media {
 	
 	// add content and check content tokens
 	public void addContent() {
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Enter the content of this book: ");
 		this.content = keyboard.nextLine();
@@ -98,13 +99,12 @@ public class Book extends Media {
 	}
 	
 	// override toString()
-	public String getDetail() {
-		String book = "BOOK - " + getTitle() + " - " + getCategory() + " - " 
-						+ getAuthors()  + " - Content length: " + getContentLength() 
-						+": " + getCost() + "$\n" 
-						+ "Token list: " +this.wordFrequency;
-		
-		return book;
+	public String toString() {
+		return "BOOK - " + getTitle() + " - " + getCategory() + " - " 
+				+ getAuthors()  + " - Content length: " + getContentLength() 
+				+ ": " + getCost() + "$\n" 
+				+ "Content: " + this.content + "\n"
+				+ "Token list: " + this.wordFrequency;
 	}
 	
 }
