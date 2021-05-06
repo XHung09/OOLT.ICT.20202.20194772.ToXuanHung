@@ -1,9 +1,7 @@
-package swing;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class HelloWorld {
+public class SwingHelloWorld {
 
     public static void main(String[] args) {
 
