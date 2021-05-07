@@ -5,10 +5,10 @@ import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-import javax.swing.Action;
-
-public class AWTAccumulator extends Frame {
+public class AWTAccumulator extends Frame implements WindowListener {
 
 	private TextField tfInput;
 	private TextField tfOutput;
@@ -33,6 +33,11 @@ public class AWTAccumulator extends Frame {
 		setTitle("AWT Accumulator");
 		setSize(350, 120);
 		setVisible(true);
+		
+		addWindowListener(this);	
+		setSize(370, 140);
+		setLayout(null);
+		setVisible(true);
 	}
 	
 	public static void main(String[] args) {
@@ -48,5 +53,15 @@ public class AWTAccumulator extends Frame {
 			tfOutput.setText(sum + "");
 		}
 	}
+	
+	public void windowActivated(WindowEvent e) {}  
+	public void windowClosed(WindowEvent e) {}  
+	public void windowClosing(WindowEvent e) {  
+	    dispose();  
+	}  
+	public void windowDeactivated(WindowEvent e) {}  
+	public void windowDeiconified(WindowEvent e) {}  
+	public void windowIconified(WindowEvent e) {}  
+	public void windowOpened(WindowEvent arg0) {}  
 	
 }
