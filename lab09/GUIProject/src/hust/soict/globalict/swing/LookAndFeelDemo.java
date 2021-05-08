@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,14 +16,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-public class LookAndFeelDemo extends JFrame {
+public class LookAndFeelDemo extends JFrame implements ActionListener {
+	
+	private JRadioButton java, system;
+	private ButtonGroup bg;
 	
 	public LookAndFeelDemo() {
 		addDemoComponents();
 		addLookAndFeelComboBox();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(380, 100);
+		setSize(450, 120);
 		setVisible(true);
 	}
 	
@@ -33,6 +37,20 @@ public class LookAndFeelDemo extends JFrame {
 		cp.add(new JTextField("Text Field"));
 		cp.add(new JRadioButton("Radio button"));
 		cp.add(new JButton("Button"));
+		
+		java = new JRadioButton("Java");
+		java.addActionListener(this);
+		cp.add(java);
+		
+		system = new JRadioButton("System");
+		system.addActionListener(this);
+		cp.add(system);
+		
+		bg = new ButtonGroup();
+		bg.add(java);
+		bg.add(system);
+		add(java);
+		add(system);
 	}
 	
 	void addLookAndFeelComboBox() {
@@ -42,14 +60,17 @@ public class LookAndFeelDemo extends JFrame {
 		// create the combo box
 		LookAndFeelInfo[] lafInfos = UIManager.getInstalledLookAndFeels();
 		String[] lafNames = new String[lafInfos.length];
+		
 		for  (int i = 0; i < lafInfos.length; i++) {
 			lafNames[i] = lafInfos[i].getName();
 		}
+		
 		JComboBox cbLookAndFeel = new JComboBox(lafNames);
 		cp.add(cbLookAndFeel);
 		
 		// handle change look and feel
 		JFrame frame = this;
+		
 		cbLookAndFeel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -67,6 +88,21 @@ public class LookAndFeelDemo extends JFrame {
 	
 	public static void main(String[] args) {
 		new LookAndFeelDemo();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		try {
+			if (ae.getSource() == java) {
+				UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			} else if (ae.getSource() == system) {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			}
+			SwingUtilities.updateComponentTreeUI(this);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 	}
 	
 }
