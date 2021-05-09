@@ -40,7 +40,7 @@ public class NumberGrid extends JFrame {
 	void addButtons(JPanel panelButtons) {
 		ButtonListener btnListener = new ButtonListener();
 		
-		for(int i = 1; i <= 9; i++) {
+		for (int i = 1; i <= 9; i++) {
 			btnNumbers[i] = new JButton("" + i);
 			panelButtons.add(btnNumbers[i]);
 			btnNumbers[i].addActionListener(btnListener);
@@ -64,12 +64,12 @@ public class NumberGrid extends JFrame {
 		public void actionPerformed(ActionEvent ae) {
 			String button = ae.getActionCommand();
 			
-			if(button.charAt(0) >= '0' && button.charAt(0) <= '9') {
+			if (button.charAt(0) >= '0' && button.charAt(0) <= '9') {
 				tfDisplay.setText(tfDisplay.getText() + button);
 			} else if (button.equals("DEL")) {
 				String str = tfDisplay.getText();
 				tfDisplay.setText("");
-				for(int i = 0; i < str.length()-1; i++) {
+				for (int i = 0; i < str.length()-1; i++) {
 					tfDisplay.setText(tfDisplay.getText() + str.charAt(i));
 				}
 			} else {

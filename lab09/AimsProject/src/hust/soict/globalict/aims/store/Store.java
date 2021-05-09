@@ -8,8 +8,12 @@ import java.util.ArrayList;
 
 public class Store {
 	public static final int MAX_ITEM_NUMBER = 100;
-	private ArrayList<Media> itemsInStore= new ArrayList<Media>();
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 	
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
 	public Media discList(int id) {
 		if ((id < 0) || (id > itemsInStore.size() - 1)) {
 			System.out.println("This ID does not exist!");
@@ -29,17 +33,16 @@ public class Store {
 	
 	// Add a media list by passing an arbitrary number of arguments
 	public void addMedia(Media ... itemList) {
-		for(Media item : itemList) {
+		for (Media item : itemList) {
 			if ((itemsInStore.contains(item) == false) && (itemsInStore.size() < MAX_ITEM_NUMBER)) {
 				this.addMedia(item);
-				System.out.println("Succeed!");
 			} 
 		}
 	} 
 	
 	// Remove media
 	public void removeMedia(Media item) {
-		if(itemsInStore.size() <= 0) {
+		if (itemsInStore.size() <= 0) {
 			System.out.println("Your cart is empty!");
 		} else {
 			if (itemsInStore.contains(item) == true) {
@@ -52,7 +55,7 @@ public class Store {
 	// Print store
 	public void printStore() {
 		System.out.println();
-		System.out.println("***********************************Order***********************************");
+		System.out.println("********************************Order********************************");
 		for (int i = 0; i < itemsInStore.size(); i++) {
 			if (itemsInStore.get(i) instanceof DigitalVideoDisc) {
 				DigitalVideoDisc dvd = (DigitalVideoDisc)itemsInStore.get(i);
@@ -66,7 +69,8 @@ public class Store {
 				cd.displayTracksDetails();
 			}
 		}
-		System.out.println("***************************************************************************");
+	
+		System.out.println("*********************************************************************");
 	}
 	
 	// search media by id

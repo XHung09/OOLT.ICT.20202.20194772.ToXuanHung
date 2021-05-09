@@ -94,4 +94,15 @@ public class CompactDisc extends Disc implements Playable {
         }
     }
 	
+	// play for GUI
+	public String playGUI() {
+		String str = null;
+       
+		for(int i = 0; i < tracks.size(); i++) {
+            str = "Playing track" + tracks.get(i).getTitle()
+            		+ "\nTrack length: " + tracks.get(i).getLength();
+        }
+        
+		return str;
+	}
 }

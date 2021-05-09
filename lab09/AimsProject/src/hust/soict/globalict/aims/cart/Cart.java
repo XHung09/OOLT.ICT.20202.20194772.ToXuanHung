@@ -142,7 +142,7 @@ public class Cart {
 	// get detail
 	public void printCart() {
 		System.out.println();
-		System.out.println("***********************************Order***********************************");
+		System.out.println("********************************Order********************************");
 		System.out.println("Ordered Items:");
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i) instanceof DigitalVideoDisc) {
@@ -159,7 +159,7 @@ public class Cart {
 		}
 		System.out.print("Total cost: ");
 		System.out.printf("%.2f$\n", totalCost());
-		System.out.println("***************************************************************************");
+		System.out.println("*********************************************************************");
 	}
 	
 	// get a lucky item
