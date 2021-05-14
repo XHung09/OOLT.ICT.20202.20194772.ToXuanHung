@@ -1,6 +1,6 @@
 package hust.soict.globalict.javafx;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
