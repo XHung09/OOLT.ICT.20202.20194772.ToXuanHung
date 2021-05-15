@@ -118,10 +118,13 @@ public class StoreScreen extends JFrame implements ActionListener {
 			String str = ae.getActionCommand();
 			
 			if (str.equals("Add Book")) {
+				dispose();
 				AddBookToStoreScreen addBook = new AddBookToStoreScreen(store);
 			} else if (str.equals("Add CD")) {
+				dispose();
 				AddCompactDiscToStoreScreen addCD = new AddCompactDiscToStoreScreen(store);
 			} else if (str.equals("Add DVD")) {
+				dispose();
 				AddDigitalVideoDiscToStoreScreen addDVD = new AddDigitalVideoDiscToStoreScreen(store);			
 			} else {
 				System.out.println(str + "Error!");

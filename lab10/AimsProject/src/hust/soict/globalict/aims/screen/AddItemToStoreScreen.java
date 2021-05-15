@@ -33,7 +33,7 @@ public class AddItemToStoreScreen extends JFrame implements ActionListener {
 		cp.add(createNorth(), BorderLayout.NORTH);
 		
 		setVisible(true);
-		setTitle("Store");
+		setTitle("Update store");
 		setSize(1024, 768);
 	}
 
@@ -101,10 +101,13 @@ public class AddItemToStoreScreen extends JFrame implements ActionListener {
 			String str = ae.getActionCommand();
 			
 			if (str.equals("Add Book")) {
+				dispose();
 				AddBookToStoreScreen addBook = new AddBookToStoreScreen(StoreScreen.store);
 			} else if (str.equals("Add CD")) {
+				dispose();
 				AddCompactDiscToStoreScreen addCD = new AddCompactDiscToStoreScreen(StoreScreen.store);
 			} else if (str.equals("Add DVD")) {
+				dispose();
 				AddDigitalVideoDiscToStoreScreen addDVD = new AddDigitalVideoDiscToStoreScreen(StoreScreen.store);
 			} else if (str.equals("View store")) {
 				dispose();

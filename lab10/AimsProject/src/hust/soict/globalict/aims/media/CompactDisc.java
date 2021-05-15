@@ -99,7 +99,7 @@ public class CompactDisc extends Disc implements Playable {
 		String str = null;
        
 		for(int i = 0; i < tracks.size(); i++) {
-            str = "Playing track" + tracks.get(i).getTitle()
+            str = "Playing track: " + tracks.get(i).getTitle()
             		+ "\nTrack length: " + tracks.get(i).getLength();
         }
         
