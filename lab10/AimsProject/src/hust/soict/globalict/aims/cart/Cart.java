@@ -4,6 +4,8 @@ import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.MediaLengthComparator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,8 +13,12 @@ import java.util.Scanner;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
 	// Add media
 	public void addMedia(Media item) {
 		if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
@@ -36,7 +42,7 @@ public class Cart {
 			System.out.println("Your cart is empty!");
 		} else {
 			if (itemsOrdered.contains(item) == true) {
-				itemsOrdered.add(item);
+				itemsOrdered.remove(item);
 				System.out.println("Succeed!");
 			} 
 		}	

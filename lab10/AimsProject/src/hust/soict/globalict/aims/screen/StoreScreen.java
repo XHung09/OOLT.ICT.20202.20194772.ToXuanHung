@@ -22,6 +22,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
@@ -31,6 +32,7 @@ public class StoreScreen extends JFrame implements ActionListener {
 	
 	protected static Store store;
 	
+	@SuppressWarnings("static-access")
 	public StoreScreen(Store store) {
 		this.store = store;
 		Container cp = getContentPane();
@@ -62,6 +64,7 @@ public class StoreScreen extends JFrame implements ActionListener {
 		title.setForeground(Color.cyan);
 		
 		JButton cart = new JButton("View cart");
+		cart.addActionListener(this);
 		cart.setPreferredSize(new Dimension(100, 50));
 		cart.setMaximumSize(new Dimension(100, 50));
 		
@@ -79,6 +82,7 @@ public class StoreScreen extends JFrame implements ActionListener {
 		JMenuItem addBook = new JMenuItem("Add Book");
 		JMenuItem addCD = new JMenuItem("Add CD");
 		JMenuItem addDVD = new JMenuItem("Add DVD");
+		JMenuItem viewCart = new JMenuItem("View cart");
 		
 		JMenu smUpdateStore = new JMenu("Update Store");
 		smUpdateStore.add(addBook);
@@ -91,6 +95,7 @@ public class StoreScreen extends JFrame implements ActionListener {
 		menu.add(smUpdateStore);
 		menu.add(new JMenuItem("View store"));
 		menu.add(new JMenuItem("View cart"));
+		viewCart.addActionListener(this);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -119,13 +124,15 @@ public class StoreScreen extends JFrame implements ActionListener {
 			
 			if (str.equals("Add Book")) {
 				dispose();
-				AddBookToStoreScreen addBook = new AddBookToStoreScreen(store);
+				new AddBookToStoreScreen(store);
 			} else if (str.equals("Add CD")) {
 				dispose();
-				AddCompactDiscToStoreScreen addCD = new AddCompactDiscToStoreScreen(store);
+				new AddCompactDiscToStoreScreen(store);
 			} else if (str.equals("Add DVD")) {
 				dispose();
-				AddDigitalVideoDiscToStoreScreen addDVD = new AddDigitalVideoDiscToStoreScreen(store);			
+				new AddDigitalVideoDiscToStoreScreen(store);			
+			} else if (str.equals("View cart")) {
+				new CartScreen(CartScreen.cart);
 			} else {
 				System.out.println(str + "Error!");
 			} 

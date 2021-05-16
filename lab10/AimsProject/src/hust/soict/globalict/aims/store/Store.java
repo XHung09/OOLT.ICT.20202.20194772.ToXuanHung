@@ -55,7 +55,7 @@ public class Store {
 	// Print store
 	public void printStore() {
 		System.out.println();
-		System.out.println("********************************Order********************************");
+		System.out.println("********************************Store********************************");
 		for (int i = 0; i < itemsInStore.size(); i++) {
 			if (itemsInStore.get(i) instanceof DigitalVideoDisc) {
 				DigitalVideoDisc dvd = (DigitalVideoDisc)itemsInStore.get(i);

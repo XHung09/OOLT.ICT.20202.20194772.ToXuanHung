@@ -13,12 +13,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
 
 public class MediaStore extends JPanel implements ActionListener {
+	
+
 	
 	private Media media;
 	public MediaStore(Media media) {
@@ -40,10 +44,12 @@ public class MediaStore extends JPanel implements ActionListener {
 	
 		addToCart.addActionListener(new ActionListener() {	
 			@Override
-			public void actionPerformed(ActionEvent ae) {
-				if (ae.getSource() == addToCart) {
-					JOptionPane.showMessageDialog(null, media.getTitle() + " is added!",
-													"Add media" , JOptionPane.INFORMATION_MESSAGE);
+			public void actionPerformed(ActionEvent ae) {				
+					CartScreen.cart.addMedia(media);
+					
+					if (ae.getSource() == addToCart) {
+						JOptionPane.showMessageDialog(null, media.getTitle() + " is added!",
+														"Add media" , JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
