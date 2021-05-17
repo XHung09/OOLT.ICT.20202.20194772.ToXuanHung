@@ -46,8 +46,6 @@ public class CartScreen extends JFrame {
 				}		
 			}
 		});
-		
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	public static void main (String[] args) {

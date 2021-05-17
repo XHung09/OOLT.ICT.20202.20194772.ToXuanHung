@@ -30,7 +30,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class StoreScreen extends JFrame implements ActionListener {
 	
-	protected static Store store;
+	protected static Store store = new Store();
 	
 	@SuppressWarnings("static-access")
 	public StoreScreen(Store store) {

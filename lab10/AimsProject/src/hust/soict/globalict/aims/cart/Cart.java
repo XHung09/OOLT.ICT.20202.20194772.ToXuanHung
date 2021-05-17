@@ -7,7 +7,6 @@ import hust.soict.globalict.aims.media.MediaLengthComparator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 

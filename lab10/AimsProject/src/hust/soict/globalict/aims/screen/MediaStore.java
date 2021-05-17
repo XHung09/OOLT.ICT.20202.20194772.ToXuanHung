@@ -19,11 +19,10 @@ import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
+import javafx.beans.property.SimpleFloatProperty;
 
 public class MediaStore extends JPanel implements ActionListener {
-	
 
-	
 	private Media media;
 	public MediaStore(Media media) {
 		this.media = media;
