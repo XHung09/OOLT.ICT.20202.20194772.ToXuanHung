@@ -7,7 +7,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
 	
-	public AddDigitalVideoDiscToStoreScreen(Store store) throws LimitExceededException {
+	public AddDigitalVideoDiscToStoreScreen(Store store) throws Exception {
 		super();
 		DigitalVideoDisc dvd;
 		String title  = JOptionPane.showInputDialog("DVD title");

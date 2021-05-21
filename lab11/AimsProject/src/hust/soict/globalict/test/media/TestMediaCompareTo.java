@@ -12,7 +12,7 @@ import hust.soict.globalict.aims.media.Track;
 
 public class TestMediaCompareTo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Collection collection = new ArrayList();
 		
 		Track track1 = new Track("B", 3);	

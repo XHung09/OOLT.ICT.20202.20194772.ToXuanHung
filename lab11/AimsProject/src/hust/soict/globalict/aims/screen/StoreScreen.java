@@ -144,7 +144,7 @@ public class StoreScreen extends JFrame implements ActionListener {
 	}
 	
 	// testing GUI
-	public static void main (String[] args) throws LimitExceededException {
+	public static void main (String[] args) throws Exception {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("CCCC", "cccc", "cccc", 3, 5f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("BBBB", "bbbb", "bbbb", 2, 5.3f);
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("DDDD", "dddd", "dddd", 4, 5.6f);

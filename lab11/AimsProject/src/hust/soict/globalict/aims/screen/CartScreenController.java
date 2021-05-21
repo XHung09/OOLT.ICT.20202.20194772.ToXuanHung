@@ -2,6 +2,8 @@ package hust.soict.globalict.aims.screen;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.LimitExceededException;
 import javax.swing.JOptionPane;
 
 import hust.soict.globalict.aims.cart.Cart;
@@ -97,17 +99,17 @@ public class CartScreenController {
     }
     
     @FXML
-    void addBookPressed(ActionEvent event) {
+    void addBookPressed(ActionEvent event) throws Exception {
 		new AddBookToStoreScreen(StoreScreen.store);
     }
 
     @FXML
-    void addCDPressed(ActionEvent event) {
+    void addCDPressed(ActionEvent event) throws Exception {
 		new AddCompactDiscToStoreScreen(StoreScreen.store);
     }
 
     @FXML
-    void addDVDPressed(ActionEvent event) {
+    void addDVDPressed(ActionEvent event) throws Exception {
 		new AddDigitalVideoDiscToStoreScreen(StoreScreen.store);
     }
 

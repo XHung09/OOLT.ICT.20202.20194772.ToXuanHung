@@ -8,7 +8,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class AddBookToStoreScreen extends AddItemToStoreScreen {
 
-	public AddBookToStoreScreen(Store store) throws LimitExceededException {
+	public AddBookToStoreScreen(Store store) throws Exception {
 		super();
 		Book book;
 		String title  = JOptionPane.showInputDialog("Book title");

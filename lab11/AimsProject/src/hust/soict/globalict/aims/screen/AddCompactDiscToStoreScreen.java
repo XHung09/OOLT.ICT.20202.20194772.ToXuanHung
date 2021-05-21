@@ -10,7 +10,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 	
-	public AddCompactDiscToStoreScreen (Store store) throws LimitExceededException {
+	public AddCompactDiscToStoreScreen (Store store) throws Exception {
 		CompactDisc cd;
 		String title  = JOptionPane.showInputDialog("CD title");
 		

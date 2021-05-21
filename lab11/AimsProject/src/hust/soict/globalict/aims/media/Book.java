@@ -25,13 +25,13 @@ public class Book extends Media {
 	}
 	
 	// Constructors
-	public Book(String title, String category, float cost, List<String> authors) {
+	public Book(String title, String category, float cost, List<String> authors) throws Exception {
 		super(title, category, cost);
 		this.authors = authors;
 		super.dateAdded = LocalDate.now();
 	}
 	
-	public Book(String title, String category, float cost) {
+	public Book(String title, String category, float cost) throws Exception {
 		super(title, category, cost);
 		super.dateAdded = LocalDate.now();
 	}

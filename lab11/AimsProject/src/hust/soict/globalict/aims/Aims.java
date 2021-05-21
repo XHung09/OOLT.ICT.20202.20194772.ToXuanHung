@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 public class Aims {
 
 	public static void main(String[] args) {
@@ -57,7 +59,11 @@ public class Aims {
 								subChoice = keyboard.nextInt();
 								
 								if (subChoice == 1) {
-									anOrder.addMedia(anItem.discList(id));
+									try {
+										anOrder.addMedia(anItem.discList(id));
+									} catch (LimitExceededException e) {
+										e.printStackTrace();
+									}
 								}
 								
 							}
@@ -70,7 +76,11 @@ public class Aims {
 							id = keyboard.nextInt();
 							
 							if (anItem.searchId(id)) {
-								anOrder.addMedia(anItem.discList(id));
+								try {
+									anOrder.addMedia(anItem.discList(id));
+								} catch (LimitExceededException e) {
+									e.printStackTrace();
+								}
 							}
 
 							break;
@@ -127,16 +137,24 @@ public class Aims {
 				    	 
 				    		System.out.print("Cost: ");
 				    		float cost = keyboard.nextFloat();				    	 
-				    		
-				    		while (cost <= 0) {
-				    			System.out.println("Cost must be positive!");
-				    			cost = keyboard.nextFloat();
-				    		}
 				    	 
-				    		DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
-				    		anItem.addMedia(dvd);
-				    	} else if (mediaChoice == 2) {										// add a book
-				    		keyboard.nextLine();
+				    		DigitalVideoDisc dvd;
+							
+				    		try {
+								dvd = new DigitalVideoDisc(title, category, director, length, cost);
+					    		
+								try {
+									anItem.addMedia(dvd);
+								} catch (LimitExceededException e) {
+									e.printStackTrace();
+								}
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}		
+
+				    	} else if (mediaChoice == 2) {										
+				    		keyboard.nextLine();											// add book
 				    		System.out.print("Book title: ");
 							String title = keyboard.nextLine();
 							
@@ -149,21 +167,28 @@ public class Aims {
 							
 							System.out.print("Cost: ");
 							Float cost = keyboard.nextFloat();
-							
-				    		while (cost <= 0) {
-				    			System.out.println("Cost must be positive!");
-				    			cost = keyboard.nextFloat();
-				    		}
 				    		
-							Book book = new Book(title, category, cost);
+							Book book;
+							try {
+								book = new Book(title, category, cost);
+								
+								for (int i = 0; i < authors.length; i++) {
+									book.addAuthor(authors[i]);
+								}			
+								
+								book.addContent();
+								book.processContent();
+								
+								try {
+									anItem.addMedia(book);
+								} catch (LimitExceededException e) {
+									e.printStackTrace();
+								}
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							
-							for (int i = 0; i < authors.length; i++) {
-								book.addAuthor(authors[i]);
-							}			
-							
-							book.addContent();
-							book.processContent();
-							anItem.addMedia(book);
 				    	} else if (mediaChoice == 3) {										// add a CD
 				      		keyboard.nextLine();
 				    		System.out.print("CD title: ");
@@ -180,28 +205,37 @@ public class Aims {
 							
 							System.out.print("Cost: ");
 							Float cost = keyboard.nextFloat();
-				    	
-							while (cost <= 0) {
-				    			System.out.println("Cost must be positive!");
-				    			cost = keyboard.nextFloat();
-				    		}
 				    		
-							CompactDisc cd = new CompactDisc(title, category, director, artist, cost);
-							System.out.print("Number of tracks: ");
-							int n = keyboard.nextInt();
-							
-							for (int i = 0; i < n; i++) {
-					      		keyboard.nextLine();
-								System.out.print("Track's title: ");
-								String trackTitle = keyboard.nextLine();
+							CompactDisc cd;
+							try {
+								cd = new CompactDisc(title, category, director, artist, cost);
 								
-								System.out.print("Track's length: ");
-								int trackLength = keyboard.nextInt();
+								System.out.print("Number of tracks: ");
+								int n = keyboard.nextInt();
 								
-								trackList.add(i, new Track(trackTitle, trackLength));
-								cd.addTrack(trackList.get(i));
-								anItem.addMedia(cd);
+								for (int i = 0; i < n; i++) {
+						      		keyboard.nextLine();
+									System.out.print("Track's title: ");
+									String trackTitle = keyboard.nextLine();
+									
+									System.out.print("Track's length: ");
+									int trackLength = keyboard.nextInt();
+									
+									trackList.add(i, new Track(trackTitle, trackLength));
+									cd.addTrack(trackList.get(i));
+									
+									try {
+										anItem.addMedia(cd);
+									} catch (LimitExceededException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
 							}
+
 				    	} else {
 							System.out.println("Wrong choice!");
 				    	}

@@ -9,7 +9,7 @@ import hust.soict.globalict.aims.media.Media;
 
 public class MediaTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		List<Media> mediae = new ArrayList<Media>();
 		List<String> authors = new ArrayList<String>();
 		authors.add("Hiroshi Fujimoto");

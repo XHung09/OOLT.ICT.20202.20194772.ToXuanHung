@@ -7,7 +7,7 @@ import hust.soict.globalict.aims.media.Book;
 
 public class BookTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		List<String> authors = new ArrayList<String>();
 		authors.add("Hiroshi Fujimoto");
 		authors.add("Motoo Abiko");

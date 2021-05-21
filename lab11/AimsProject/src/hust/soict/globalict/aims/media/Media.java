@@ -35,12 +35,19 @@ public abstract class Media implements Comparable<Media> {
 	}
 	
 	// Constructors
-	public Media(String title, String category, float cost) {
+	public Media(String title, String category, float cost) throws Exception {
 		super();
 		this.id = nbMedia;
 		++nbMedia;
 		this.title = title;
 		this.category = category;
+		
+		if (cost > 0) {
+			this.cost = cost;
+		} else {
+			throw new Exception("ERROR: Invalid cost");
+		}
+		
 		this.cost = cost;
 		this.dateAdded = LocalDate.now();
 	}
