@@ -1,12 +1,13 @@
 package hust.soict.globalict.aims.screen;
 
+import javax.naming.LimitExceededException;
 import javax.swing.JOptionPane;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.store.Store;
 
 public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
 	
-	public AddDigitalVideoDiscToStoreScreen(Store store) {
+	public AddDigitalVideoDiscToStoreScreen(Store store) throws LimitExceededException {
 		super();
 		DigitalVideoDisc dvd;
 		String title  = JOptionPane.showInputDialog("DVD title");

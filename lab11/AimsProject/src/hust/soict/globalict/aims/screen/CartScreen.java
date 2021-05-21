@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.LimitExceededException;
 import javax.swing.JFrame;
 
 import hust.soict.globalict.aims.cart.Cart;
@@ -48,7 +49,7 @@ public class CartScreen extends JFrame {
 		});
 	}
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws LimitExceededException {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("CCCC", "cccc", "cccc", 3, 5f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("BBBB", "bbbb", "bbbb", 2, 5.3f);
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("DDDD", "dddd", "dddd", 4, 5.6f);

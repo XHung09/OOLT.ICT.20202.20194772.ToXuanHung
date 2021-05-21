@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.naming.LimitExceededException;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -44,11 +45,16 @@ public class MediaStore extends JPanel implements ActionListener {
 		addToCart.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent ae) {				
+				try {
 					CartScreen.cart.addMedia(media);
 					
 					if (ae.getSource() == addToCart) {
 						JOptionPane.showMessageDialog(null, media.getTitle() + " is added!",
 														"Add media" , JOptionPane.INFORMATION_MESSAGE);
+					}
+				} catch (LimitExceededException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		});

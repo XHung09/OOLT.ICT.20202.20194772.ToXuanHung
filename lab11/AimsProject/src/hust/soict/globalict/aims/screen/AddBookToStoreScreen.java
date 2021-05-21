@@ -1,5 +1,6 @@
 package hust.soict.globalict.aims.screen;
 
+import javax.naming.LimitExceededException;
 import javax.swing.JOptionPane;
 
 import hust.soict.globalict.aims.media.Book;
@@ -7,7 +8,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class AddBookToStoreScreen extends AddItemToStoreScreen {
 
-	public AddBookToStoreScreen(Store store) {
+	public AddBookToStoreScreen(Store store) throws LimitExceededException {
 		super();
 		Book book;
 		String title  = JOptionPane.showInputDialog("Book title");

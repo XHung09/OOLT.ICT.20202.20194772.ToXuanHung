@@ -1,5 +1,6 @@
 package hust.soict.globalict.aims.screen;
 
+import javax.naming.LimitExceededException;
 import javax.swing.JOptionPane;
 
 import hust.soict.globalict.aims.media.CompactDisc;
@@ -9,7 +10,7 @@ import hust.soict.globalict.aims.store.Store;
 
 public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 	
-	public AddCompactDiscToStoreScreen (Store store) {
+	public AddCompactDiscToStoreScreen (Store store) throws LimitExceededException {
 		CompactDisc cd;
 		String title  = JOptionPane.showInputDialog("CD title");
 		

@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
@@ -19,15 +21,18 @@ public class Cart {
 	}
 
 	// Add media
-	public void addMedia(Media item) {
+	public void addMedia(Media item) throws LimitExceededException {
 		if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
 			itemsOrdered.add(item);
 			System.out.println("Succeed!");
-		} 
+		} else {
+			throw new LimitExceededException("ERROR: The number of "
+					+ "media has reached its limmit");
+		}
 	}
 	
 	// Add a dvd list by passing an arbitrary number of arguments
-	public void addMedia(Media ... itemList) {
+	public void addMedia(Media ... itemList) throws LimitExceededException {
 		for(Media item : itemList) {
 			if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
 				this.addMedia(item);
@@ -51,9 +56,8 @@ public class Cart {
 	public void removeIdMedia(int id) {
 		if (id < itemsOrdered.size()) {
 			itemsOrdered.remove(id);
-			System.out.println("Succeed!");
-		} else if (itemsOrdered.size() == 0) { 
-			System.out.println("Your store is empty!");
+		} else if (itemsOrdered.size() <= 0) { 
+			System.out.println("Your cart is empty!");
 		} else {
 			System.out.println("This ID does not exist!");
 		}

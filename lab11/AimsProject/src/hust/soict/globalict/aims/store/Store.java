@@ -6,6 +6,8 @@ import hust.soict.globalict.aims.media.Media;
 
 import java.util.ArrayList;
 
+import javax.naming.LimitExceededException;
+
 public class Store {
 	public static final int MAX_ITEM_NUMBER = 100;
 	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
@@ -24,15 +26,18 @@ public class Store {
 	}
 	
 	// Add media
-	public void addMedia(Media item) {
+	public void addMedia(Media item) throws LimitExceededException {
 		if ((itemsInStore.contains(item) == false) && (itemsInStore.size() < MAX_ITEM_NUMBER)) {
 			itemsInStore.add(item);
 			System.out.println("Succeed!");
-		} 
+		} else {
+			throw new LimitExceededException("ERROR: The number of "
+					+ "media has reached its limmit");
+		}
 	}
 	
 	// Add a media list by passing an arbitrary number of arguments
-	public void addMedia(Media ... itemList) {
+	public void addMedia(Media ... itemList) throws LimitExceededException {
 		for (Media item : itemList) {
 			if ((itemsInStore.contains(item) == false) && (itemsInStore.size() < MAX_ITEM_NUMBER)) {
 				this.addMedia(item);
