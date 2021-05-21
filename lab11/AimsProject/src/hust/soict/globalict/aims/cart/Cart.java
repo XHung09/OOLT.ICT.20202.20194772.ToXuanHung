@@ -1,4 +1,5 @@
 package hust.soict.globalict.aims.cart;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
@@ -178,7 +179,7 @@ public class Cart {
     }
 	
 	// play
-	public void play(int id) {
+	public void play(int id) throws PlayerException {
 		if (itemsOrdered.get(id) instanceof DigitalVideoDisc) {
 			DigitalVideoDisc dvd = (DigitalVideoDisc)itemsOrdered.get(id);
 			dvd.play();
