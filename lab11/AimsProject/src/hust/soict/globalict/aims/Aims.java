@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims;
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.exception.LuckyItemException;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
@@ -54,7 +56,9 @@ public class Aims {
 							System.out.print("Search for ID: ");
 							int id = keyboard.nextInt();
 							
-							if (anItem.searchId(id)) {
+							if (anItem.searchId(id)) {	
+								anItem.discList(id).toString();
+								
 								System.out.println("Do you want to add this to your cart? \nChoice: 1 for Yes - 2 for No");
 								subChoice = keyboard.nextInt();
 								
@@ -92,7 +96,11 @@ public class Aims {
 							id = keyboard.nextInt();
 							
 							if (anItem.searchId(id)) {
-								anItem.play(id);
+								try {
+									anItem.play(id);
+								} catch (PlayerException e) {
+									e.printStackTrace();
+								}
 							}
 							
 							break;
@@ -129,11 +137,6 @@ public class Aims {
 				    		
 				    		System.out.print("Length: ");
 				    		int length = keyboard.nextInt();
-				    	 
-				    		while (length <= 0) {
-				    			System.out.println("Length must be positive");
-				    			length = keyboard.nextInt();
-				    		}
 				    	 
 				    		System.out.print("Cost: ");
 				    		float cost = keyboard.nextFloat();				    	 
@@ -223,13 +226,12 @@ public class Aims {
 									
 									trackList.add(i, new Track(trackTitle, trackLength));
 									cd.addTrack(trackList.get(i));
+								}
 									
-									try {
-										anItem.addMedia(cd);
-									} catch (LimitExceededException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+								try {
+									anItem.addMedia(cd);
+								} catch (LimitExceededException e) {
+									e.printStackTrace();
 								}
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
@@ -304,14 +306,23 @@ public class Aims {
 							id = keyboard.nextInt();
 							
 							if (anOrder.searchId(id)) {
-								anOrder.play(id);
+								try {
+									anOrder.play(id);
+								} catch (PlayerException e) {
+									e.printStackTrace();
+								}
 							}
 							
 							break;
 							
 						case 5:
-							anOrder.getALuckyItem();
-							System.out.println("You will get a random free item. Hooray!");
+							try {
+								anOrder.getALuckyItem();
+							} catch (LuckyItemException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
 							break;
 							
 						case 6:												

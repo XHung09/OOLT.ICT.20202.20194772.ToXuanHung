@@ -28,11 +28,12 @@ public class Track implements Playable, Comparable<Track> {
 	
 	// play
 	public void play() throws PlayerException {
-		System.out.println("Playing track: " + this.getTitle());
 		if (this.getLength() > 0) {
+			System.out.println("Playing track: " + this.getTitle());
 			System.out.println("Track length: " + this.getLength());
 		} else {
-			throw new PlayerException("ERORR: DVD length is non-positive");
+			System.err.println("Cannot play this track");
+			throw new PlayerException("ERROR: Track length is non-positive");
 		}
 	}
 	

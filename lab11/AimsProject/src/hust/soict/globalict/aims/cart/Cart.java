@@ -1,4 +1,5 @@
 package hust.soict.globalict.aims.cart;
+import hust.soict.globalict.aims.exception.LuckyItemException;
 import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
@@ -23,9 +24,11 @@ public class Cart {
 
 	// Add media
 	public void addMedia(Media item) throws LimitExceededException {
-		if ((itemsOrdered.contains(item) == false) && (itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
-			itemsOrdered.add(item);
-			System.out.println("Succeed!");
+		if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+			if (itemsOrdered.contains(item) == false) {
+				itemsOrdered.add(item);
+				System.out.println("Succeed!");
+			}
 		} else {
 			throw new LimitExceededException("ERROR: The number of "
 					+ "media has reached its limmit");
@@ -173,9 +176,40 @@ public class Cart {
 	}
 	
 	// get a lucky item
-	public void getALuckyItem() {
-        int rand = (int)(Math.random() * itemsOrdered.size()) + 0;
-        itemsOrdered.get(rand).freeCost();
+	// threshold for the number of items is 3
+	// threshold for the price is 150$
+	// threshold for the price of the lucky item is 
+	public void getALuckyItem() throws LuckyItemException {
+		if (this.itemsOrdered.size() < 3) {
+			throw new LuckyItemException("Do not meet our lucky item policy!");
+		} else if (this.totalCost() < 150) {
+			throw new LuckyItemException("Do not meet our lucky item policy!");
+		} else {
+			System.out.println("You will get a random free lucky item. Hooray!");
+			System.out.println("Please check the lucky item in your cart");
+			float threshold;
+			
+			if (this.totalCost() < 350) {
+				threshold = 50;
+			} else {
+				threshold = 100;
+			}
+			
+			int luckyItemId = 0;
+			for (int i = 0; i < this.itemsOrdered.size(); i++) {
+				float luckyItemCost = this.itemsOrdered.get(i).getCost();
+				if (luckyItemCost < threshold && luckyItemId == -1) {
+					luckyItemId = i;
+					continue;
+				}
+				
+				if (itemsOrdered.get(luckyItemId).getCost() < luckyItemCost && luckyItemCost < threshold) {
+					luckyItemId = i;
+				}
+			}
+			
+	        itemsOrdered.get(luckyItemId).freeCost();
+		}
     }
 	
 	// play

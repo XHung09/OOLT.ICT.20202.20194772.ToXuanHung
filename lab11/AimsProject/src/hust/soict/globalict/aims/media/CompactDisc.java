@@ -105,6 +105,7 @@ public class CompactDisc extends Disc implements Playable {
 				}
 			}
 		} else {
+			System.err.println("Cannot play this CD");
 			throw new PlayerException("ERROR: CD length is non-positive");
 		}
     }

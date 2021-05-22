@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.exception;
 
+import javax.swing.JOptionPane;
+
 public class PlayerException extends Exception {
 
 	public PlayerException() {
@@ -9,6 +11,7 @@ public class PlayerException extends Exception {
 	public PlayerException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
+		JOptionPane.showMessageDialog(null, getMessage(), "Illegeal DVD length", JOptionPane.WARNING_MESSAGE);
 	}
 
 	public PlayerException(Throwable cause) {

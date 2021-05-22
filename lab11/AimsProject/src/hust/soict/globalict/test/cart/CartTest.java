@@ -9,11 +9,11 @@ public class CartTest {
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("BBBB", "bbbb", "bbbb", 2, 5.3f);
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("DDDD", "dddd", "dddd", 4, 5.6f);
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("AAAA", "aaaa", "aaaa", 1, 5.6f);
-		DigitalVideoDisc dvd5 = new DigitalVideoDisc("EEEE", "eeee", "eeee", 5, 3.3f);
+		DigitalVideoDisc dvd5 = new DigitalVideoDisc("EEEE", "eeee", "eeee", 5, 150f);
 		
 		Cart anOrder = new Cart();
 		anOrder.addMedia(new DigitalVideoDisc[] {dvd3, dvd2, dvd4, dvd1, dvd5});
-
+		anOrder.getALuckyItem();
 		anOrder.printCart();
 
 		// sort the current cart by Cost
@@ -30,5 +30,7 @@ public class CartTest {
 		anOrder.sortCartByLength();
 		System.out.println("Sorted by length");
 		anOrder.printCart();
+		
+		anOrder.searchIdMedia();
 	}
 }

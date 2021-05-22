@@ -3,6 +3,8 @@ package hust.soict.globalict.aims.media;
 import java.time.LocalDate;
 import java.util.Comparator;
 
+import com.sun.javafx.css.CascadingStyle;
+
 public abstract class Media implements Comparable<Media> {
 
 	protected int id;
@@ -38,7 +40,6 @@ public abstract class Media implements Comparable<Media> {
 	public Media(String title, String category, float cost) throws Exception {
 		super();
 		this.id = nbMedia;
-		++nbMedia;
 		this.title = title;
 		this.category = category;
 		
@@ -50,6 +51,7 @@ public abstract class Media implements Comparable<Media> {
 		
 		this.cost = cost;
 		this.dateAdded = LocalDate.now();
+		++nbMedia;
 	}
 	
 	public Media(String title, String category) {
@@ -90,22 +92,40 @@ public abstract class Media implements Comparable<Media> {
 
 	// override equals() method
 	@Override
-	public boolean equals(Object obj) {	
-		if (obj instanceof Media) {
-			Media tempMedia = (Media) obj;
-			return tempMedia.id == this.id;
- 		} else {
- 			return false;
- 		}
+	public boolean equals(Object obj) throws NullPointerException, ClassCastException {	
+        
+        if (obj == null) {
+			throw new NullPointerException("ERROR: This object is null");
+		}
+        
+		try {
+			Media media = (Media) obj;
+			
+			if (this.getTitle().equals(media.getTitle()) && this.getCost() == media.getCost()) {
+				return true;
+			}
+			
+			return false;
+		} catch (ClassCastException e) {
+			System.err.println("ERROR: Can't cast this object");
+			throw e;
+		}
+
 	}
 	
 	// override compareTo() method
 	@Override
 	public int compareTo(Media obj) {
-		int cmp = this.title.compareTo(obj.title);
+		int cmp;
 		
-		if (cmp == 0) {
-			cmp = this.category.compareTo(obj.category);
+		if (obj == null) {
+			throw new NullPointerException("ERROR: This object is null");
+		} else {
+			cmp = this.title.compareTo(obj.title);
+			
+			if (cmp == 0) {
+				cmp = this.category.compareTo(obj.category);
+			}
 		}
 		
 		return cmp;
